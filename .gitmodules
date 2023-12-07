@@ -1,0 +1,3 @@
+[submodule "my_website/themes/academic"]
+	path = my_website/themes/academic
+	url = https://github.com/wowchemy/starter-hugo-academic

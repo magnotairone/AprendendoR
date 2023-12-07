@@ -1,0 +1,15 @@
+intro
+básicos-da-linguagem-r
+usando-o-r-como-uma-calculadora
+atribuindo-variáveis
+números-especias
+vetores-matrizes-e-dataframes
+vetores
+S:sequencia
+tamanhos
+indexando-vetores
+matrizes
+nomeando-linhas-columas-e-dimensões
+indexação
+combinando-matrizes
+operações-com-matrizes

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 2 Básicos da linguagem R | Aprendendo R</title>
+  <meta name="description" content="Este livro é um tutorial básico para quem quer começar a aprender a programar na linguagem R." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 2 Básicos da linguagem R | Aprendendo R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Este livro é um tutorial básico para quem quer começar a aprender a programar na linguagem R." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 Básicos da linguagem R | Aprendendo R" />
+  
+  <meta name="twitter:description" content="Este livro é um tutorial básico para quem quer começar a aprender a programar na linguagem R." />
+  
+
+<meta name="author" content="Magno TF Severino" />
+
+
+<meta name="date" content="2023-12-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a></li>
+<li class="chapter" data-level="2" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html"><i class="fa fa-check"></i><b>2</b> Básicos da linguagem <code>R</code></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#usando-o-r-como-uma-calculadora"><i class="fa fa-check"></i><b>2.1</b> Usando o <code>R</code> como uma calculadora</a></li>
+<li class="chapter" data-level="2.2" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#atribuindo-variáveis"><i class="fa fa-check"></i><b>2.2</b> Atribuindo variáveis</a></li>
+<li class="chapter" data-level="2.3" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#números-especias"><i class="fa fa-check"></i><b>2.3</b> Números especias</a></li>
+<li class="chapter" data-level="2.4" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#vetores-matrizes-e-dataframes"><i class="fa fa-check"></i><b>2.4</b> Vetores, Matrizes e Dataframes</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#vetores"><i class="fa fa-check"></i><b>2.4.1</b> Vetores</a></li>
+<li class="chapter" data-level="2.4.2" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#matrizes"><i class="fa fa-check"></i><b>2.4.2</b> Matrizes</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aprendendo R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="básicos-da-linguagem-r" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Básicos da linguagem <code>R</code><a href="básicos-da-linguagem-r.html#básicos-da-linguagem-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Para instalação,</p>
+<ul>
+<li><p>faça o download do R em <a href="http://www.r-project.org" class="uri">http://www.r-project.org</a>;</p></li>
+<li><p>sugestão: utilizar a IDE <a href="http://www.rstudio.org">R Studio</a>.</p></li>
+</ul>
+<p>É muito importante saber como obter ajuda no R.
+Sempre que estiver em dúvidas quanto as características de alguma função, consule a aba <em>help</em> do R.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="básicos-da-linguagem-r.html#cb1-1" tabindex="-1"></a>?mean <span class="co">#abre a página de ajuda da função &#39;mean&#39;</span></span>
+<span id="cb1-2"><a href="básicos-da-linguagem-r.html#cb1-2" tabindex="-1"></a>??plot <span class="co">#procura por tópicos contendo a palavra &#39;plot&#39;</span></span></code></pre></div>
+<div id="usando-o-r-como-uma-calculadora" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Usando o <code>R</code> como uma calculadora<a href="básicos-da-linguagem-r.html#usando-o-r-como-uma-calculadora" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O operador <tt>+</tt> realiza a adição entre dois elementos.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="básicos-da-linguagem-r.html#cb2-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>Um vetor é um conjunto ordenado de valores.
+O operador <tt>:</tt> cria uma sequência a partir de um número até outro.
+A função <tt>c</tt> concatena valores, criando um vetor.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="básicos-da-linguagem-r.html#cb4-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="básicos-da-linguagem-r.html#cb6-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p>Além de adicionar dois números, o operador <tt>+</tt> pode ser usado para adicionar dois vetores.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="básicos-da-linguagem-r.html#cb8-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">+</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1]  7  9 11 13 15</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="básicos-da-linguagem-r.html#cb10-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1]  7  9 11 13 15</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="básicos-da-linguagem-r.html#cb12-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1]  7  9 11 13 15</code></pre>
+<p>Os próximos exemplos mostram subtração, multiplicação, exponenciação e divisão.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="básicos-da-linguagem-r.html#cb14-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">13</span>) <span class="sc">-</span> <span class="dv">2</span>       <span class="co">#subtração</span></span></code></pre></div>
+<pre><code>## [1]  0  1  3  5  9 11</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="básicos-da-linguagem-r.html#cb16-1" tabindex="-1"></a><span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">2</span> <span class="sc">*</span> <span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">2</span>                     <span class="co">#multiplicação</span></span></code></pre></div>
+<pre><code>## [1] 4 1 0 1 4</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="básicos-da-linguagem-r.html#cb18-1" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">^</span> <span class="dv">2</span>                        <span class="co">#exponenciação</span></span></code></pre></div>
+<pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="básicos-da-linguagem-r.html#cb20-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">/</span> <span class="dv">3</span>                        <span class="co">#divisão</span></span></code></pre></div>
+<pre><code>##  [1] 0.3333333 0.6666667 1.0000000 1.3333333 1.6666667 2.0000000 2.3333333
+##  [8] 2.6666667 3.0000000 3.3333333</code></pre>
+</div>
+<div id="atribuindo-variáveis" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Atribuindo variáveis<a href="básicos-da-linguagem-r.html#atribuindo-variáveis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Fazer cálculos com o R é bem simples e útil.
+A maior parte das vezes queremos armazenar os resultados para uso posterior.
+Assim, podemos atribuir valor à uma variável, através do operador <tt>&lt;-</tt>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="básicos-da-linguagem-r.html#cb22-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb22-2"><a href="básicos-da-linguagem-r.html#cb22-2" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="básicos-da-linguagem-r.html#cb22-3" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">*</span> <span class="dv">3</span></span>
+<span id="cb22-4"><a href="básicos-da-linguagem-r.html#cb22-4" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="básicos-da-linguagem-r.html#cb22-5" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb22-6"><a href="básicos-da-linguagem-r.html#cb22-6" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="básicos-da-linguagem-r.html#cb22-7" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
+<p>Agora, podemos reutilizar esses valores para fazer outros cálculos.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="básicos-da-linguagem-r.html#cb23-1" tabindex="-1"></a>a <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> b</span></code></pre></div>
+<pre><code>## [1] 31</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="básicos-da-linguagem-r.html#cb25-1" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> y <span class="sc">-</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 10 13 16 19 22</code></pre>
+<p>Observe que não temos que dizer ao R qual o tipo da variável, se era um número (as variáveis <tt>a</tt> e <tt>a</tt>) ou vetor (<tt>x</tt> e <tt>y</tt>).</p>
+</div>
+<div id="números-especias" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Números especias<a href="básicos-da-linguagem-r.html#números-especias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para facilitar operações aritméticas, R suporta quatro valores especiais de números: <tt> Inf, -Inf, NaN</tt> e <tt>NA</tt>.
+Os dois primeiros representam infinito positivo e negativo.
+<tt>NaN</tt> é um acrônimo inglês para “not a number”, ou seja, não é um número.
+Ele aparece quando um cálculo não faz sentido, ou não está definido.
+<tt>NA</tt> significa “not available”, ou seja, não disponível, e representa um valor faltante.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="básicos-da-linguagem-r.html#cb27-1" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">Inf</span> <span class="sc">+</span> <span class="dv">1</span>, <span class="cn">Inf</span> <span class="sc">-</span> <span class="dv">1</span>, <span class="cn">Inf</span> <span class="sc">-</span> <span class="cn">Inf</span>, <span class="cn">NA</span> <span class="sc">+</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] Inf Inf NaN  NA</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="básicos-da-linguagem-r.html#cb29-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">0</span> <span class="sc">/</span> <span class="dv">0</span>, <span class="cn">Inf</span> <span class="sc">/</span> <span class="cn">Inf</span>, <span class="dv">1</span> <span class="sc">/</span> <span class="cn">Inf</span>)</span></code></pre></div>
+<pre><code>## [1] NaN NaN   0</code></pre>
+</div>
+<div id="vetores-matrizes-e-dataframes" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Vetores, Matrizes e Dataframes<a href="básicos-da-linguagem-r.html#vetores-matrizes-e-dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Previamente, vimos alguns tipos de vetores para valores lógicos, caracteres e números.
+Nessa seção, utilizaremos técnicas de manipulação de vetores e introduziremos o caso multidimensional: matrizes e dataframes.</p>
+<p>Abaixo relembramos as operações que já foram feitas com vetores</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="básicos-da-linguagem-r.html#cb31-1" tabindex="-1"></a><span class="dv">10</span><span class="sc">:</span><span class="dv">5</span>                    <span class="co">#sequência de números de 10 até 5</span></span></code></pre></div>
+<pre><code>## [1] 10  9  8  7  6  5</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="básicos-da-linguagem-r.html#cb33-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>), <span class="dv">8</span>)   <span class="co">#valores concatenados em um único vetor</span></span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5 6 7 8</code></pre>
+<div id="vetores" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Vetores<a href="básicos-da-linguagem-r.html#vetores" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Existem funções para criar vetores de um tipo e com tamanho específicos.
+Todos os elementos deste vetor terá valor zero, FALSE, um caracter vazio, ou o equivalente à <em>nada/vazio</em> para aquele tipo.
+Veja abaixo duas maneiras de definir um vetor.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="básicos-da-linguagem-r.html#cb35-1" tabindex="-1"></a><span class="fu">vector</span>(<span class="st">&quot;numeric&quot;</span>, <span class="dv">5</span>) <span class="co">#cria um vetor numérico de 5 elementos</span></span></code></pre></div>
+<pre><code>## [1] 0 0 0 0 0</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="básicos-da-linguagem-r.html#cb37-1" tabindex="-1"></a><span class="fu">numeric</span>(<span class="dv">5</span>) <span class="co">#equivalente ao comando acima</span></span></code></pre></div>
+<pre><code>## [1] 0 0 0 0 0</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="básicos-da-linguagem-r.html#cb39-1" tabindex="-1"></a><span class="fu">vector</span>(<span class="st">&quot;logical&quot;</span>, <span class="dv">5</span>) <span class="co">#cria um vetor lógico de 5 elementos</span></span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="básicos-da-linguagem-r.html#cb41-1" tabindex="-1"></a><span class="fu">logical</span>(<span class="dv">5</span>) <span class="co">#equivalente ao comando acima</span></span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="básicos-da-linguagem-r.html#cb43-1" tabindex="-1"></a><span class="fu">vector</span>(<span class="st">&quot;character&quot;</span>, <span class="dv">5</span>) <span class="co">#cria um vetor de caracteres de 5 elementos</span></span></code></pre></div>
+<pre><code>## [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="básicos-da-linguagem-r.html#cb45-1" tabindex="-1"></a><span class="fu">character</span>(<span class="dv">5</span>) <span class="co">#equivalente ao comando acima</span></span></code></pre></div>
+<pre><code>## [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<div id="S:sequencia" class="section level4 hasAnchor" number="2.4.1.1">
+<h4><span class="header-section-number">2.4.1.1</span> Sequências<a href="básicos-da-linguagem-r.html#S:sequencia" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Podemos criar sequências mais gerais que aquelas criadas com o operador <tt>:</tt>.
+A função <tt>seq</tt> te permite criar sequências em diferentes maneiras
+Veja abaixo.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="básicos-da-linguagem-r.html#cb47-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">3</span>, <span class="dv">12</span>) <span class="co">#equivalente à 3:12</span></span></code></pre></div>
+<pre><code>##  [1]  3  4  5  6  7  8  9 10 11 12</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="básicos-da-linguagem-r.html#cb49-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">3</span>, <span class="dv">12</span>, <span class="dv">2</span>) <span class="co">#o terceiro argumento indica a distância entre os elementos na lista.</span></span></code></pre></div>
+<pre><code>## [1]  3  5  7  9 11</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="básicos-da-linguagem-r.html#cb51-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.01</span>, <span class="sc">-</span><span class="fl">0.01</span>)</span></code></pre></div>
+<pre><code>##  [1] 0.10 0.09 0.08 0.07 0.06 0.05 0.04 0.03 0.02 0.01</code></pre>
+</div>
+<div id="tamanhos" class="section level4 hasAnchor" number="2.4.1.2">
+<h4><span class="header-section-number">2.4.1.2</span> Tamanhos<a href="básicos-da-linguagem-r.html#tamanhos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Todo vetor tem um tamanho, um número não negativo que representa a quantidade de elementos que o vetor contém.
+A função <tt>length</tt> retorna o tamanho de um dado vetor.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="básicos-da-linguagem-r.html#cb53-1" tabindex="-1"></a><span class="fu">length</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) </span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="básicos-da-linguagem-r.html#cb55-1" tabindex="-1"></a>frase <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Observe&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;resultado&quot;</span>, <span class="st">&quot;dos&quot;</span>, <span class="st">&quot;comandos&quot;</span>, <span class="st">&quot;abaixo&quot;</span>)</span>
+<span id="cb55-2"><a href="básicos-da-linguagem-r.html#cb55-2" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="básicos-da-linguagem-r.html#cb55-3" tabindex="-1"></a><span class="fu">length</span>(frase)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="básicos-da-linguagem-r.html#cb57-1" tabindex="-1"></a><span class="fu">nchar</span>(frase)</span></code></pre></div>
+<pre><code>## [1] 7 1 9 3 8 6</code></pre>
+</div>
+<div id="indexando-vetores" class="section level4 hasAnchor" number="2.4.1.3">
+<h4><span class="header-section-number">2.4.1.3</span> Indexando vetores<a href="básicos-da-linguagem-r.html#indexando-vetores" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A indexação é útil quando queremos acessar elementos específicos de um vetor.
+Considere o vetor</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="básicos-da-linguagem-r.html#cb59-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">^</span> <span class="dv">2</span></span></code></pre></div>
+<p>Abaixo, três métodos de indexar os mesmos valores do vetor <tt>x</tt>.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="básicos-da-linguagem-r.html#cb60-1" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</span>
+<span id="cb60-2"><a href="básicos-da-linguagem-r.html#cb60-2" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="básicos-da-linguagem-r.html#cb60-3" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">4</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="básicos-da-linguagem-r.html#cb61-1" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)]</span></code></pre></div>
+<pre><code>## [1]  1  9 25</code></pre>
+<p>Se nomearmos os elementos do vetor, o método abaixo obtém os mesmos valores de <tt>x</tt>.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="básicos-da-linguagem-r.html#cb63-1" tabindex="-1"></a><span class="fu">names</span>(x) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;four&quot;</span>, <span class="st">&quot;nine&quot;</span>, <span class="st">&quot;sixteen&quot;</span>, <span class="st">&quot;twenty five&quot;</span>)</span>
+<span id="cb63-2"><a href="básicos-da-linguagem-r.html#cb63-2" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;nine&quot;</span>, <span class="st">&quot;twenty five&quot;</span>)]</span></code></pre></div>
+<pre><code>##         one        nine twenty five 
+##           1           9          25</code></pre>
+<p>Cuidado, acessar um elemento fora do tamanho do vetor não gera um erro no R, apenas NA.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="básicos-da-linguagem-r.html#cb65-1" tabindex="-1"></a>x[<span class="dv">6</span>]</span></code></pre></div>
+<pre><code>## &lt;NA&gt; 
+##   NA</code></pre>
+</div>
+</div>
+<div id="matrizes" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Matrizes<a href="básicos-da-linguagem-r.html#matrizes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Uma matriz é o equivalente à um vetor, porém em duas dimensões.
+Abaixo, um exemplo de definição de uma matriz com 4 linhas e 3 colunas (total de 12 elementos).</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="básicos-da-linguagem-r.html#cb67-1" tabindex="-1"></a>?matrix</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="básicos-da-linguagem-r.html#cb68-1" tabindex="-1"></a>uma_matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb68-2"><a href="básicos-da-linguagem-r.html#cb68-2" tabindex="-1"></a>      <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,</span>
+<span id="cb68-3"><a href="básicos-da-linguagem-r.html#cb68-3" tabindex="-1"></a>      <span class="at">nrow =</span> <span class="dv">4</span>, <span class="co">#ncol = 3 gera o mesmo resultado. Verifique!</span></span>
+<span id="cb68-4"><a href="básicos-da-linguagem-r.html#cb68-4" tabindex="-1"></a>      <span class="at">dimnames =</span> <span class="fu">list</span>(</span>
+<span id="cb68-5"><a href="básicos-da-linguagem-r.html#cb68-5" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">&quot;L1&quot;</span>, <span class="st">&quot;L2&quot;</span>, <span class="st">&quot;L3&quot;</span>, <span class="st">&quot;L4&quot;</span>),</span>
+<span id="cb68-6"><a href="básicos-da-linguagem-r.html#cb68-6" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>)</span>
+<span id="cb68-7"><a href="básicos-da-linguagem-r.html#cb68-7" tabindex="-1"></a>      )</span>
+<span id="cb68-8"><a href="básicos-da-linguagem-r.html#cb68-8" tabindex="-1"></a>)</span>
+<span id="cb68-9"><a href="básicos-da-linguagem-r.html#cb68-9" tabindex="-1"></a></span>
+<span id="cb68-10"><a href="básicos-da-linguagem-r.html#cb68-10" tabindex="-1"></a><span class="fu">class</span>(uma_matriz)</span></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="básicos-da-linguagem-r.html#cb70-1" tabindex="-1"></a>uma_matriz</span></code></pre></div>
+<pre><code>##    C1 C2 C3
+## L1  1  5  9
+## L2  2  6 10
+## L3  3  7 11
+## L4  4  8 12</code></pre>
+<p>Por padrão, ao criar uma matrix, o vetor passado como primeiro argumento preenche a matrix por colunas.
+Para preencher a matrix por linhas, basta especificar o argumento <tt>byrow=TRUE</tt></p>
+<p>A função <tt>dim</tt> retorna um vetor de inteiros com as dimensões da variável.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="básicos-da-linguagem-r.html#cb72-1" tabindex="-1"></a><span class="fu">dim</span>(uma_matriz)</span></code></pre></div>
+<pre><code>## [1] 4 3</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="básicos-da-linguagem-r.html#cb74-1" tabindex="-1"></a><span class="fu">nrow</span>(uma_matriz) <span class="co">#retorna o número de linhas da matrix</span></span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="básicos-da-linguagem-r.html#cb76-1" tabindex="-1"></a><span class="fu">ncol</span>(uma_matriz) <span class="co">#retorna o número de colunas da matrix</span></span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="básicos-da-linguagem-r.html#cb78-1" tabindex="-1"></a><span class="fu">length</span>(uma_matriz) <span class="co">#retorna o número de elementos da matrix</span></span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div id="nomeando-linhas-columas-e-dimensões" class="section level4 hasAnchor" number="2.4.2.1">
+<h4><span class="header-section-number">2.4.2.1</span> Nomeando linhas, columas e dimensões<a href="básicos-da-linguagem-r.html#nomeando-linhas-columas-e-dimensões" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Da mesma forma para vetores, podemos nomear (e obter os nomes de) linhas e colunas de matrizes.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="básicos-da-linguagem-r.html#cb80-1" tabindex="-1"></a><span class="fu">rownames</span>(uma_matriz)</span></code></pre></div>
+<pre><code>## [1] &quot;L1&quot; &quot;L2&quot; &quot;L3&quot; &quot;L4&quot;</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="básicos-da-linguagem-r.html#cb82-1" tabindex="-1"></a><span class="fu">colnames</span>(uma_matriz)</span></code></pre></div>
+<pre><code>## [1] &quot;C1&quot; &quot;C2&quot; &quot;C3&quot;</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="básicos-da-linguagem-r.html#cb84-1" tabindex="-1"></a><span class="fu">dimnames</span>(uma_matriz)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;L1&quot; &quot;L2&quot; &quot;L3&quot; &quot;L4&quot;
+## 
+## [[2]]
+## [1] &quot;C1&quot; &quot;C2&quot; &quot;C3&quot;</code></pre>
+</div>
+<div id="indexação" class="section level4 hasAnchor" number="2.4.2.2">
+<h4><span class="header-section-number">2.4.2.2</span> Indexação<a href="básicos-da-linguagem-r.html#indexação" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A indexação de matrizes funciona de maneira similar à de vetores, com a diferença que agora precisam ser especificadas mais de uma dimensão.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="básicos-da-linguagem-r.html#cb86-1" tabindex="-1"></a>uma_matriz[<span class="dv">1</span>, <span class="fu">c</span>(<span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>)] <span class="co">#elementos na primeira linha, segunda e terceira colunas</span></span></code></pre></div>
+<pre><code>## C2 C3 
+##  5  9</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="básicos-da-linguagem-r.html#cb88-1" tabindex="-1"></a>uma_matriz[<span class="dv">1</span>, ] <span class="co">#todos elementos da primeira linha</span></span></code></pre></div>
+<pre><code>## C1 C2 C3 
+##  1  5  9</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="básicos-da-linguagem-r.html#cb90-1" tabindex="-1"></a>uma_matriz[, <span class="fu">c</span>(<span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>)] <span class="co">#todos elementos da segunda e terceira colunas</span></span></code></pre></div>
+<pre><code>##    C2 C3
+## L1  5  9
+## L2  6 10
+## L3  7 11
+## L4  8 12</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="básicos-da-linguagem-r.html#cb92-1" tabindex="-1"></a>uma_matriz[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)] <span class="co">#todos elementos da segunda e terceira colunas</span></span></code></pre></div>
+<pre><code>##    C2 C3
+## L1  5  9
+## L2  6 10
+## L3  7 11
+## L4  8 12</code></pre>
+</div>
+<div id="combinando-matrizes" class="section level4 hasAnchor" number="2.4.2.3">
+<h4><span class="header-section-number">2.4.2.3</span> Combinando matrizes<a href="básicos-da-linguagem-r.html#combinando-matrizes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Considere a seguinte matriz.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="básicos-da-linguagem-r.html#cb94-1" tabindex="-1"></a>outra_matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb94-2"><a href="básicos-da-linguagem-r.html#cb94-2" tabindex="-1"></a>      <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">24</span>, <span class="dv">2</span>),</span>
+<span id="cb94-3"><a href="básicos-da-linguagem-r.html#cb94-3" tabindex="-1"></a>      <span class="at">nrow =</span> <span class="dv">4</span>,</span>
+<span id="cb94-4"><a href="básicos-da-linguagem-r.html#cb94-4" tabindex="-1"></a>      <span class="at">dimnames =</span> <span class="fu">list</span>(</span>
+<span id="cb94-5"><a href="básicos-da-linguagem-r.html#cb94-5" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">&quot;L5&quot;</span>, <span class="st">&quot;L6&quot;</span>, <span class="st">&quot;L7&quot;</span>, <span class="st">&quot;L8&quot;</span>),</span>
+<span id="cb94-6"><a href="básicos-da-linguagem-r.html#cb94-6" tabindex="-1"></a>        <span class="fu">c</span>(<span class="st">&quot;C5&quot;</span>, <span class="st">&quot;C6&quot;</span>, <span class="st">&quot;C7&quot;</span>)</span>
+<span id="cb94-7"><a href="básicos-da-linguagem-r.html#cb94-7" tabindex="-1"></a>      ))</span></code></pre></div>
+<p>A combinação de matrizes pode ser feita através das funções <tt>cbind</tt> e <tt>rbind</tt>, que combina matrizes por colunas e por linhas, respectivamentes.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="básicos-da-linguagem-r.html#cb95-1" tabindex="-1"></a><span class="fu">cbind</span>(uma_matriz, outra_matriz)</span></code></pre></div>
+<pre><code>##    C1 C2 C3 C5 C6 C7
+## L1  1  5  9  2 10 18
+## L2  2  6 10  4 12 20
+## L3  3  7 11  6 14 22
+## L4  4  8 12  8 16 24</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="básicos-da-linguagem-r.html#cb97-1" tabindex="-1"></a><span class="fu">rbind</span>(uma_matriz, outra_matriz)</span></code></pre></div>
+<pre><code>##    C1 C2 C3
+## L1  1  5  9
+## L2  2  6 10
+## L3  3  7 11
+## L4  4  8 12
+## L5  2 10 18
+## L6  4 12 20
+## L7  6 14 22
+## L8  8 16 24</code></pre>
+</div>
+<div id="operações-com-matrizes" class="section level4 hasAnchor" number="2.4.2.4">
+<h4><span class="header-section-number">2.4.2.4</span> Operações com matrizes<a href="básicos-da-linguagem-r.html#operações-com-matrizes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>As operações básicas (+, -, *, /) funcionam de elemento a elemento em matrizes, da mesmo forma como em vetores:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="básicos-da-linguagem-r.html#cb99-1" tabindex="-1"></a>uma_matriz <span class="sc">+</span> outra_matriz</span></code></pre></div>
+<pre><code>##    C1 C2 C3
+## L1  3 15 27
+## L2  6 18 30
+## L3  9 21 33
+## L4 12 24 36</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="básicos-da-linguagem-r.html#cb101-1" tabindex="-1"></a>uma_matriz <span class="sc">*</span> outra_matriz</span></code></pre></div>
+<pre><code>##    C1  C2  C3
+## L1  2  50 162
+## L2  8  72 200
+## L3 18  98 242
+## L4 32 128 288</code></pre>
+<p>Cuidado: as matrizes e vetores devem ter tamanhos compativeis!</p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["AprendendoR.pdf", "AprendendoR.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
