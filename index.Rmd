@@ -15,7 +15,7 @@ github-repo: rstudio/bookdown-demo
 
 # Introdução {-}
 
-Este livro compila tutoriais da linguagem `R` que usei em diversas aulas que dei ao longo dos últimos anos e foi escrito baseado em Cotton (2013)
+Este livro compila tutoriais da linguagem `R` que usei em diversas aulas que dei ao longo dos últimos anos e foi escrito baseado em Cotton (2013) e Wickham et al. (2023).
 
 
 ```{r include=FALSE}
