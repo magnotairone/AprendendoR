@@ -1,0 +1,5 @@
+# References {-}
+
+- Cotton, R. (2013). Learning R: a step-by-step function guide to data analysis. " O'Reilly Media, Inc.".
+
+- Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). [R for Data Science](https://r4ds.had.co.nz/). " O'Reilly Media, Inc.".

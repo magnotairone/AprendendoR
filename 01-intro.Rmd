@@ -1,5 +1,8 @@
 # Básicos da linguagem `R`
 
+> O conteúdo apresentado aqui foi usado na primeira aula prática do curso de "Aprendizagem Estatística com Aplicações em R".
+
+
 Para instalação, 
 
 - faça o download do R em <http://www.r-project.org>;
@@ -7,7 +10,7 @@ Para instalação,
 - sugestão: utilizar a IDE [R Studio](http://www.rstudio.org).
 
 É muito importante saber como obter ajuda no R.
-Sempre que estiver em dúvidas quanto as características de alguma função, consule a aba *help* do R.
+Sempre que estiver em dúvidas quanto as características de alguma função, consule a aba *help* do RStudio.
 
 ```{r help, eval=FALSE}
 ?mean #abre a página de ajuda da função 'mean'

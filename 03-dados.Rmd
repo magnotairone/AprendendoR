@@ -1,0 +1,235 @@
+# Importação e manipulação de bases de dados
+
+> Este capítulo foi escrito baseado em Cotton (2013) e o conteúdo apresentado aqui foi usado como base para o minicurso "R para não-programadores".
+
+O tipo de dados mais comum de ser importado para o `R` são aqueles que são armazenadas em planilhas.
+Nesta aula, vamos trabalhar com os dados contidos na biblioteca `nycflights13`, porém, vamos conosiderar a versão dos dados salvos em arquivos `.csv`.  
+Para importar dados do tipo `.csv` (valores separados por vírgula), utilize o comando abaixo.
+
+```{r}
+
+flights <- read.csv("flights.csv")
+airports <- read.csv("airports.csv")
+
+class(flights)
+class(airports)
+```
+
+Veja a seguinr os comandos para analisar a estrutura dos dados e obter uma descrição do tipo de cada coluna presente na base.
+
+```{r}
+str(flights)
+
+str(airports)
+```
+
+
+Frequentemente, você deverá alterar o tipo de alguma(s) coluna(s), como, por exemplo, para tratar dados do tipo fator, caracteres e datas.
+
+Nos dados armazenados em `flights`, podemos converter as colunas `carrier`, `orign` e `dest` para fator. 
+
+```{r}
+flights$carrier <- as.factor(flights$carrier)
+
+flights$origin <- as.factor(flights$origin)
+
+flights$dest <- as.factor(flights$dest)
+```
+
+Na tabela airport, podemos converter a coluna `tzone` para o tipo fator.
+
+```{r}
+airports$tzone <- as.factor(airports$tzone)
+```
+
+Note que a coluna `flights$time_hour` representa a hora data e hora do voo.
+Com a função `head()` podemos visualizar as primeiras observações de uma coluna (e de um data frame também).
+
+```{r}
+head(flights$time_hour)
+
+class(flights$time_hour)
+```
+
+Entretanto, a classe de `flights$time_hour` é caracter, o que nos impossibilita trabalhar com datas de maneira adequada.
+Uma alternativa, é utilizar a biblioteca `lubridate`.
+Para isso, execute o comando abaixo para instalá-la.
+```{r, eval=FALSE}
+install.packages("lubridate")
+```
+
+Em seguida, basta carregar a biblioteca e utilizar as funções que fazem conversão de caracteres em data e manipulações relacionadas a este tipo de dado.
+Abaixo, adicionamos períodos de tempos à uma data (anos, meses, dias), obtemos a diferença entre duas datas e selecionamos a unidade de tempo para exibir essa diferença.
+
+```{r}
+library(lubridate)
+
+data <- "25/12/92"
+class(data)
+
+data <- dmy(data)
+class(data)
+
+year(data)
+month(data)
+day(data)
+
+# adicionar 10 anos a uma data
+data + years(10)
+
+# adicionar 10 anos e 5 meses a uma data
+data + years(10) + months(5)
+
+# adicionar 10 anos, 5 meses e 7 dias a uma data
+data + years(10) + months(5) + days(7)
+
+# obter a diferença de duas datas em dias
+interval(data, today()) / years(1)
+
+# obter a diferença de duas datas em dias
+interval(data, today()) / days(1)
+```
+
+Este pacote nos permite trabalhar com data e hora em uma mesma variável.
+Note que agora a data está representada no formato MM/DD/AAAA, além de hora, minutos e segundos.
+
+```{r}
+data <- "12/25/92 10:07:35"
+class(data)
+
+data <- mdy_hms(data)
+class(data)
+
+year(data)
+hour(data)
+minute(data)
+second(data)
+```
+
+Com isso, podemos coverter a coluna `flights$time_hour` para o tipo de dados `date`.
+```{r}
+flights$time_hour <- ymd_hms(flights$time_hour)
+```
+
+Agora, todas as colunas de `flights` estão com os tipos de dados corretos.
+```{r}
+str(flights)
+```
+
+
+## Análise descritiva
+
+Realizar uma analise descritiva é fundamental para compreender, de forma resumida, a informação contida nos dados.
+
+Uma função que resume de maneira "inteligente" todas as colunas  de um data frame é a `summary`.
+É "inteligente" porque, a forma como o resumo é feito depente do tipo de cada coluna da tabela.
+Em `flights` há colunas numéricas, fatores, caracter e data.
+
+```{r}
+summary(flights)
+```
+
+Vamos obter a média de atrasos por aeroporto de origem.
+Antes, vamos verificar quantos aeroportos de origem existem na base.
+
+```{r}
+unique(flights$origin)
+```
+
+Há quantos voos registrados saindo de cada aeroporto?
+
+```{r}
+table(flights$origin)
+```
+
+**Exercício**: qual o nome dos aeroportos cujos códigos FAA estão listados acima? (Dica: fazer merge com `airports`).
+
+Agora, vamos calcular a média de atraso geral para voos que partiram de "JFK".
+
+```{r}
+mean(flights$dep_delay[flights$origin == "JFK"])
+```
+
+Note que existem dados faltantes (do tipo `NA`) na coluna `dep_delay`.
+Podemos desconsiderar esses dados no cálculo da média.
+
+```{r}
+mean(flights$dep_delay[flights$origin == "JFK"], na.rm = TRUE)
+```
+
+Podemos utilizar a função `tapply` para obter o resultado de uma função aplicada de acordo com certos grupos.
+Por exemplo, para obter a média de atraso dos voos de cada um dos aeroportos de origem, use o comando abaixo.
+
+```{r}
+tapply(flights$dep_delay, flights$origin, mean, na.rm = TRUE)
+```
+
+Para arredondar números, podemos usar a função `round`, informando quantas casas decimais devem ser consideradas.
+
+```{r}
+round(tapply(flights$dep_delay, flights$origin, mean, na.rm = TRUE), 2)
+```
+
+Podemos fazer o mesmo considerando os aeroportos de destino.
+
+```{r}
+unique(flights$dest)
+
+round(tapply(flights$arr_delay, flights$origin, mean, na.rm = TRUE), 2)
+```
+
+Saber somente a média de uma meida não é suficiente, devemos obter outras estatísticas, como a mediana, desvio padrão e variância, por exemplo.
+
+```{r}
+
+tapply(flights$dep_delay, flights$origin, median, na.rm = TRUE)
+
+tapply(flights$dep_delay, flights$origin, sd, na.rm = TRUE)
+
+tapply(flights$dep_delay, flights$origin, var, na.rm = TRUE)
+
+```
+
+Podemos combinar todos esses resultados acima em uma única tabela, usando o comoando `cbind`.
+Abaixo, acrescentamos ainda os valores mínimo e máximo de atraso na partida observado em cada aerporto.
+
+```{r}
+cbind(Media = tapply(flights$dep_delay, flights$origin, mean, na.rm = TRUE),
+      Mediana = tapply(flights$dep_delay, flights$origin, median, na.rm = TRUE),
+      Minimo = tapply(flights$dep_delay, flights$origin, min, na.rm = TRUE),
+      Maximo = tapply(flights$dep_delay, flights$origin, max, na.rm = TRUE),
+      Desvio_padrao = tapply(flights$dep_delay, flights$origin, sd, na.rm = TRUE),
+      Variancia = tapply(flights$dep_delay, flights$origin, var, na.rm = TRUE))
+```
+
+
+Além disso, podemos construir gráficos, para analisar os dados de forma visual.
+Abaixo, criamos histogramas do atrado na partida de cada um dos três aeroportos de Nova York.
+```{r}
+hist(flights$dep_delay[flights$origin == "JFK"], main="JFK")
+
+hist(flights$dep_delay[flights$origin == "LGA"], main="LGA")
+
+hist(flights$dep_delay[flights$origin == "EWR"], main="EWR")
+```
+
+Os três gráficos podem ser exibidos de uma única vez se usarmos a opção `mfrow`, que permite definir o número de linhas e colunas do grid para plotar os gráficos.
+
+```{r, out.width="100%", fig.height=3}
+par(mfrow=c(1,3))
+
+hist(flights$dep_delay[flights$origin == "JFK"], main="JFK")
+
+hist(flights$dep_delay[flights$origin == "LGA"], main="LGA")
+
+hist(flights$dep_delay[flights$origin == "EWR"], main="EWR")
+```
+
+
+## Lista de exercicios
+
+1. Importe no `R` a planilha de dados correspondente ao seu projeto aplicado.
+
+2. Verifique se alguma coluna deve ser transformada para um tipo de dados mais adequado.
+
+3. Obtenha estatísticas descritivas dos dados.

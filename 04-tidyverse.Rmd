@@ -1,0 +1,234 @@
+# O pacote `tidyverse`
+
+
+> Este capítulo foi baseado no livro [R for Data Science](https://r4ds.had.co.nz/), que atualmente está sendo traduzido para o português brasileiro através de um grupo de pessoas voluntárias ([mais detalhes aqui](https://github.com/orgs/cienciadedatos/projects/2)).
+
+`tidyverse` é uma coleção de bibliotecas criadas para o universo de data science. 
+Todos os pacotes 'tidyverse' possuem a mesma gramática, estrutura de dados e filosofia:
+
+Veja todos os pacotes disponíveis em: https://www.tidyverse.org/
+
+Vamos instalar o pacote `tidyverse`:
+```{r, eval= FALSE}
+install.packages("tidyverse")
+```
+
+E carregar a biblioteca:
+```{r}
+library(tidyverse)
+```
+## O operador pipe ( %>% ) da library `magrittr`
+
+Atalho no teclado: `Ctrl + Shift + M`
+
+Passa o objeto do lado esquerdo como primeiro argumento (ou
+.argumento) da função do lado direito:
+
+- \textbf{x} `%>%` f(y) é equivalente a f(\textbf{x},y)
+
+- \textbf{y} `%>%` f(x,`.`,z) é equivalente a f(x,\textbf{y},z)
+
+Na prática, vamos supor que queremos somar todos os elementos do `vetor` e em seguida tirar a raiz quadrada desta soma:
+
+```{r}
+vetor <- c(20,40,60,80,200)
+
+#raiz da soma
+sqrt(sum(vetor))
+```
+
+Usando o pipe:
+```{r}
+vetor %>% sum() %>% sqrt()
+```
+
+## Transformação de Dados com `dplyr`
+
+As cinco principais funções do `dplyr` são:
+
+- `filter()`
+\vspace{3mm}
+- `arrange()`
+\vspace{3mm}
+- `select()`
+\vspace{3mm}
+- `mutate()`
+\vspace{3mm}
+- `summarize()`
+
+Todos os verbos funcionam de maneira similar:
+
+1. O primeiro argumento é um data frame
+\vspace{2mm}
+2. Os próximos argumentos descrevem o que fazer com o data frame
+\vspace{2mm}
+3. O resultado é um novo data frame
+
+
+## Filtrando linhas com `filter()`
+Vamos voltar a utilizar a base de dados flights:
+```{r, eval = FALSE}
+flights <- read.csv("flights.csv")
+```
+
+```{r, echo = FALSE}
+library(nycflights13)
+data(flights)
+```
+Sem pipe:
+```{r}
+filter(flights, month == 1, day == 1)
+```
+
+Com pipe:
+```{r}
+flights %>% filter(month == 1, day == 1)
+```
+
+Atrubuindo e imprimindo:
+
+```{r}
+# Para atribuir e imprimir de uma só vez, coloque
+# parênteses em volta da atribuição (os dois espaços
+# depois dos parênteses abaixo não são necessários).
+
+(  jan1 <- flights %>% filter(month == 1, day == 1)  )
+```
+
+
+\newpage
+
+Podemos utilizar os operadores lógicos aprendidos nas primeiras aulas para filtrar aqui também.
+
+Por exemplo, vamos filtar somente as observações que \textbf{não} são `NA` na coluna `arr_delay`:
+
+```{r}
+flights %>% filter(!is.na(arr_delay))
+```
+
+
+Origem = Kennedy ou Newark, Destino = Los Angeles:
+```{r}
+
+flights %>% filter(origin %in% c("JFK", "EWR"), dest == "LAX")
+
+```
+
+\newpage
+## Arranjando linhas com `arrange()`
+
+
+Organizando os dados segundo a ordem crescente da coluna `dep_delay`:
+
+```{r}
+flights %>% arrange(dep_delay)
+```
+
+Agora usando a ordem decrescente:
+
+```{r}
+flights %>% arrange(desc(dep_delay))
+```
+
+Se você fornecer mais de uma coluna, as demais colunas serão usadas sucessivamente para decidir os empates:
+
+```{r}
+flights %>% arrange(desc(month), day)
+```
+
+## Selecionando colunas com select()
+
+Vamos supor que eu só queira utilizar colunas específicas da minha base: `carrier`, `year`, `month` e `day`
+
+```{r}
+
+flights %>% select(carrier, year, month, day)
+
+```
+
+Selecionando todas as colunas, MENOS a coluna `year`:
+
+
+```{r}
+
+flights %>% select(-year)
+
+```
+
+`everything()` é útil para mover as colunas de lugar:
+
+```{r}
+
+flights %>% select(carrier, origin, everything())
+```
+
+Também podemos renomear uma coluna dentro do select:
+
+```{r}
+#renomeando a coluna year para "ano":
+
+flights %>% select("ano" = year, month, day)
+
+```
+
+
+Combinando `filter()`, `select()` e `arrange()`:
+
+Suponha que nosso objetivo seja verificar qual a companhia aérea que mais atrasa nos vôos entre JFK e LAX:
+```{r}
+flights %>%
+    filter(origin == "JFK", dest == "LAX") %>%
+    select(carrier, dep_delay) %>%
+    arrange(desc(dep_delay))
+```
+
+
+## Criando variáveis (colunas) com `mutate()`
+
+Queremos criar uma variável que mostre a velocidade de cada voo:
+```{r}
+flights %>%
+    select(year:day, flight,  distance, air_time) %>%
+    mutate(speed = distance / (air_time / 60))
+```
+
+Note que você também pode se referir às variáveis que criou:
+```{r}
+flights %>%
+    select(year:day, flight,  distance, air_time) %>%
+    mutate(hours = air_time / 60,
+           speed = distance / hours)
+```
+
+## `summarise()` colapsa a tabela toda em apenas uma linha
+
+Vamos calcular o atraso médio de decolagem e a quantidade total de voos:
+
+```{r}
+flights %>%
+    filter(!is.na(dep_delay)) %>%
+    summarise(mean_delay = mean(dep_delay), number_of_flights = n())
+```
+
+## `group_by()` muda a "unidade de análise" de toda a tabela para os grupos definidos
+
+Vamos calcular o atraso médio de decolagem e a quantidade total de voos, mas agora analisando por companhia aérea:
+
+```{r}
+flights %>%
+    filter(!is.na(dep_delay)) %>%
+    group_by(carrier) %>% 
+    summarise(mean_delay = mean(dep_delay), number_of_flights = n())
+```
+
+### DESAFIO:
+
+Para cada destino, calcule: a (1) distância média dos voos e (2) o tempo de atraso médio na decolagem e (3) o número de voos na base e mostre tudo numa planilha só.
+
+```{r, echo = FALSE, eval = FALSE}
+
+flights %>%
+    filter(!is.na(distance), !is.na(arr_delay)) %>%
+    group_by(dest) %>%
+    summarise(count = n(), distance = mean(distance), delay = mean(arr_delay))
+```
