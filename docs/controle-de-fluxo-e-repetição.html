@@ -23,7 +23,7 @@
 <meta name="author" content="Magno TF Severino" />
 
 
-<meta name="date" content="2023-12-23" />
+<meta name="date" content="2024-01-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#vetores"><i class="fa fa-check"></i><b>1.4.1</b> Vetores</a></li>
 <li class="chapter" data-level="1.4.2" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#matrizes"><i class="fa fa-check"></i><b>1.4.2</b> Matrizes</a></li>
+<li class="chapter" data-level="1.4.3" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#data-frames"><i class="fa fa-check"></i><b>1.4.3</b> Data frames</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="controle-de-fluxo-e-repetição.html"><a href="controle-de-fluxo-e-repetição.html"><i class="fa fa-check"></i><b>2</b> Controle de fluxo e repetição</a>
@@ -166,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html"><i class="fa fa-check"></i><b>4</b> O pacote <code>tidyverse</code></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#o-operador-pipe-da-library-magrittr"><i class="fa fa-check"></i><b>4.1</b> O operador pipe ( %&gt;% ) da library <code>magrittr</code></a></li>
+<li class="chapter" data-level="4.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#o-operador-pipe-da-library-magrittr"><i class="fa fa-check"></i><b>4.1</b> O operador pipe ( <code>%&gt;%</code> ) da library <code>magrittr</code></a></li>
 <li class="chapter" data-level="4.2" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#transformação-de-dados-com-dplyr"><i class="fa fa-check"></i><b>4.2</b> Transformação de Dados com <code>dplyr</code></a></li>
 <li class="chapter" data-level="4.3" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#filtrando-linhas-com-filter"><i class="fa fa-check"></i><b>4.3</b> Filtrando linhas com <code>filter()</code></a></li>
 <li class="chapter" data-level="4.4" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#arranjando-linhas-com-arrange"><i class="fa fa-check"></i><b>4.4</b> Arranjando linhas com <code>arrange()</code></a></li>
@@ -178,7 +179,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.8.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#desafio"><i class="fa fa-check"></i><b>4.8.1</b> DESAFIO:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot</code></a></li>
+<li class="chapter" data-level="5" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html"><i class="fa fa-check"></i><b>5</b> Vizualização com <code>ggplot</code></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#criando-um-objeto-ggplot"><i class="fa fa-check"></i><b>5.1</b> Criando um objeto ggplot</a></li>
+<li class="chapter" data-level="5.2" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#gráfico-de-dispersão"><i class="fa fa-check"></i><b>5.2</b> Gráfico de Dispersão</a></li>
+<li class="chapter" data-level="5.3" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#gráfico-de-colunas"><i class="fa fa-check"></i><b>5.3</b> Gráfico de Colunas</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -203,44 +209,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="controle-de-fluxo-e-repetição" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Capítulo 2</span> Controle de fluxo e repetição<a href="controle-de-fluxo-e-repetição.html#controle-de-fluxo-e-repetição" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <blockquote>
-<p>Este capítulo foi escrito baseado em Cotton (2013) e o conteúdo apresentado aqui foi usado como base para o minicurso “R para não-programadores”.</p>
+<p>Este capítulo foi escrito baseado em Cotton (2013) e o conteúdo apresentado aqui foi usado como base para o minicurso “R para não-programadores” que ministrei junto com a prof. Marina Bicudo.</p>
 </blockquote>
 <p>Por algum motivo particular, você pode querer executar ou não um determinado trecho do seu código.
 Também, pode querer que um trecho seja executado repetidas vezes.</p>
 <div id="if-e-else" class="section level3 hasAnchor" number="2.0.1">
 <h3><span class="header-section-number">2.0.1</span> <code>if</code> e <code>else</code><a href="controle-de-fluxo-e-repetição.html#if-e-else" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A maneira mais simples de controlar o fluxo de execução é adicionando um valor lógico e executando o comando <code>if</code>.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="controle-de-fluxo-e-repetição.html#cb103-1" tabindex="-1"></a><span class="cf">if</span>(<span class="cn">TRUE</span>) <span class="fu">message</span>(<span class="st">&quot;Isso é verdadeiro!&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="controle-de-fluxo-e-repetição.html#cb146-1" tabindex="-1"></a><span class="cf">if</span>(<span class="cn">TRUE</span>) <span class="fu">message</span>(<span class="st">&quot;Isso é verdadeiro!&quot;</span>)</span></code></pre></div>
 <pre><code>## Isso é verdadeiro!</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="controle-de-fluxo-e-repetição.html#cb105-1" tabindex="-1"></a><span class="cf">if</span>(<span class="cn">FALSE</span>) <span class="fu">message</span>(<span class="st">&quot;Isso não é verdadeiro!&quot;</span>)</span>
-<span id="cb105-2"><a href="controle-de-fluxo-e-repetição.html#cb105-2" tabindex="-1"></a></span>
-<span id="cb105-3"><a href="controle-de-fluxo-e-repetição.html#cb105-3" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.na</span>(<span class="cn">NA</span>)) <span class="fu">message</span>(<span class="st">&quot;O valor está faltando!&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="controle-de-fluxo-e-repetição.html#cb148-1" tabindex="-1"></a><span class="cf">if</span>(<span class="cn">FALSE</span>) <span class="fu">message</span>(<span class="st">&quot;Isso não é verdadeiro!&quot;</span>)</span>
+<span id="cb148-2"><a href="controle-de-fluxo-e-repetição.html#cb148-2" tabindex="-1"></a></span>
+<span id="cb148-3"><a href="controle-de-fluxo-e-repetição.html#cb148-3" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.na</span>(<span class="cn">NA</span>)) <span class="fu">message</span>(<span class="st">&quot;O valor está faltando!&quot;</span>)</span></code></pre></div>
 <pre><code>## O valor está faltando!</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="controle-de-fluxo-e-repetição.html#cb107-1" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">&gt;</span> <span class="fl">0.5</span>) <span class="fu">message</span>(<span class="st">&quot;Essa mensagem ocorre com 50% de chance.&quot;</span>)</span>
-<span id="cb107-2"><a href="controle-de-fluxo-e-repetição.html#cb107-2" tabindex="-1"></a></span>
-<span id="cb107-3"><a href="controle-de-fluxo-e-repetição.html#cb107-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb107-4"><a href="controle-de-fluxo-e-repetição.html#cb107-4" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">&gt;</span> <span class="dv">2</span>) {</span>
-<span id="cb107-5"><a href="controle-de-fluxo-e-repetição.html#cb107-5" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x</span>
-<span id="cb107-6"><a href="controle-de-fluxo-e-repetição.html#cb107-6" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> y </span>
-<span id="cb107-7"><a href="controle-de-fluxo-e-repetição.html#cb107-7" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="controle-de-fluxo-e-repetição.html#cb150-1" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">runif</span>(<span class="dv">1</span>) <span class="sc">&gt;</span> <span class="fl">0.5</span>) <span class="fu">message</span>(<span class="st">&quot;Essa mensagem ocorre com 50% de chance.&quot;</span>)</span></code></pre></div>
+<pre><code>## Essa mensagem ocorre com 50% de chance.</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="controle-de-fluxo-e-repetição.html#cb152-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb152-2"><a href="controle-de-fluxo-e-repetição.html#cb152-2" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">&gt;</span> <span class="dv">2</span>) {</span>
+<span id="cb152-3"><a href="controle-de-fluxo-e-repetição.html#cb152-3" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x</span>
+<span id="cb152-4"><a href="controle-de-fluxo-e-repetição.html#cb152-4" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> y </span>
+<span id="cb152-5"><a href="controle-de-fluxo-e-repetição.html#cb152-5" tabindex="-1"></a>}</span></code></pre></div>
 <p>Para executar um comando caso a condição do <code>if</code> não seja verdadeira, utilize o <code>else</code>.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="controle-de-fluxo-e-repetição.html#cb108-1" tabindex="-1"></a><span class="cf">if</span>(<span class="cn">FALSE</span>)</span>
-<span id="cb108-2"><a href="controle-de-fluxo-e-repetição.html#cb108-2" tabindex="-1"></a>{</span>
-<span id="cb108-3"><a href="controle-de-fluxo-e-repetição.html#cb108-3" tabindex="-1"></a>   <span class="fu">message</span>(<span class="st">&quot;Não será executado...&quot;</span>)</span>
-<span id="cb108-4"><a href="controle-de-fluxo-e-repetição.html#cb108-4" tabindex="-1"></a>} <span class="cf">else</span> <span class="co">#o else deve estar na mesma linha que fecha as chaves</span></span>
-<span id="cb108-5"><a href="controle-de-fluxo-e-repetição.html#cb108-5" tabindex="-1"></a>{</span>
-<span id="cb108-6"><a href="controle-de-fluxo-e-repetição.html#cb108-6" tabindex="-1"></a>   <span class="fu">message</span>(<span class="st">&quot;mas este será.&quot;</span>)</span>
-<span id="cb108-7"><a href="controle-de-fluxo-e-repetição.html#cb108-7" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="controle-de-fluxo-e-repetição.html#cb153-1" tabindex="-1"></a><span class="cf">if</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb153-2"><a href="controle-de-fluxo-e-repetição.html#cb153-2" tabindex="-1"></a>{</span>
+<span id="cb153-3"><a href="controle-de-fluxo-e-repetição.html#cb153-3" tabindex="-1"></a>   <span class="fu">message</span>(<span class="st">&quot;Não será executado...&quot;</span>)</span>
+<span id="cb153-4"><a href="controle-de-fluxo-e-repetição.html#cb153-4" tabindex="-1"></a>} <span class="cf">else</span> <span class="co">#o else deve estar na mesma linha que fecha as chaves</span></span>
+<span id="cb153-5"><a href="controle-de-fluxo-e-repetição.html#cb153-5" tabindex="-1"></a>{</span>
+<span id="cb153-6"><a href="controle-de-fluxo-e-repetição.html#cb153-6" tabindex="-1"></a>   <span class="fu">message</span>(<span class="st">&quot;mas este será.&quot;</span>)</span>
+<span id="cb153-7"><a href="controle-de-fluxo-e-repetição.html#cb153-7" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## mas este será.</code></pre>
 <p>Como R é uma linguagem vetorizada, é possível vetorizar estruturas de controle de fluxo, através da função <code>ifelse</code>.
 Esta função necessita de três argumentos: o primeiro é um vetor de valor lógico, o segundo contém os valores que serão retornados quando a condição lógica é verdadeira (<code>TRUE</code>), o terceiro contem os valores que serão retornados quando a condição é falsa (<code>FALSE</code>).</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="controle-de-fluxo-e-repetição.html#cb110-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb110-2"><a href="controle-de-fluxo-e-repetição.html#cb110-2" tabindex="-1"></a>numeros <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">10</span>)</span>
-<span id="cb110-3"><a href="controle-de-fluxo-e-repetição.html#cb110-3" tabindex="-1"></a></span>
-<span id="cb110-4"><a href="controle-de-fluxo-e-repetição.html#cb110-4" tabindex="-1"></a>maiores_50 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(numeros <span class="sc">&gt;</span> <span class="dv">50</span>, <span class="st">&quot;Maior que 50&quot;</span>, <span class="st">&quot;Menor ou igual a 50&quot;</span>)</span>
-<span id="cb110-5"><a href="controle-de-fluxo-e-repetição.html#cb110-5" tabindex="-1"></a></span>
-<span id="cb110-6"><a href="controle-de-fluxo-e-repetição.html#cb110-6" tabindex="-1"></a>maiores_50 <span class="ot">&lt;-</span> <span class="fu">factor</span>(maiores_50)</span>
-<span id="cb110-7"><a href="controle-de-fluxo-e-repetição.html#cb110-7" tabindex="-1"></a><span class="fu">table</span>(maiores_50)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="controle-de-fluxo-e-repetição.html#cb155-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb155-2"><a href="controle-de-fluxo-e-repetição.html#cb155-2" tabindex="-1"></a>numeros <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb155-3"><a href="controle-de-fluxo-e-repetição.html#cb155-3" tabindex="-1"></a></span>
+<span id="cb155-4"><a href="controle-de-fluxo-e-repetição.html#cb155-4" tabindex="-1"></a>maiores_50 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(numeros <span class="sc">&gt;</span> <span class="dv">50</span>, <span class="st">&quot;Maior que 50&quot;</span>, <span class="st">&quot;Menor ou igual a 50&quot;</span>)</span>
+<span id="cb155-5"><a href="controle-de-fluxo-e-repetição.html#cb155-5" tabindex="-1"></a></span>
+<span id="cb155-6"><a href="controle-de-fluxo-e-repetição.html#cb155-6" tabindex="-1"></a>maiores_50 <span class="ot">&lt;-</span> <span class="fu">factor</span>(maiores_50)</span>
+<span id="cb155-7"><a href="controle-de-fluxo-e-repetição.html#cb155-7" tabindex="-1"></a><span class="fu">table</span>(maiores_50)</span></code></pre></div>
 <pre><code>## maiores_50
 ##        Maior que 50 Menor ou igual a 50 
 ##                   4                   6</code></pre>
@@ -251,19 +257,19 @@ Esta função necessita de três argumentos: o primeiro é um vetor de valor ló
 <h4><span class="header-section-number">2.0.2.1</span> <code>while</code><a href="controle-de-fluxo-e-repetição.html#while" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>O <code>while</code> primeiramente checa a condição e, caso verdadeira, a executa.
 No exemplo abaixo, o <code>while</code> será executado somente se <code>acao</code> for diferente de “Descansar”.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="controle-de-fluxo-e-repetição.html#cb112-1" tabindex="-1"></a>acoes <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;Aprender a programar em R&quot;</span>,</span>
-<span id="cb112-2"><a href="controle-de-fluxo-e-repetição.html#cb112-2" tabindex="-1"></a>        <span class="st">&quot;Fazer um café&quot;</span>,</span>
-<span id="cb112-3"><a href="controle-de-fluxo-e-repetição.html#cb112-3" tabindex="-1"></a>        <span class="st">&quot;Assistir um filme&quot;</span>,</span>
-<span id="cb112-4"><a href="controle-de-fluxo-e-repetição.html#cb112-4" tabindex="-1"></a>        <span class="st">&quot;Descansar&quot;</span>)</span>
-<span id="cb112-5"><a href="controle-de-fluxo-e-repetição.html#cb112-5" tabindex="-1"></a></span>
-<span id="cb112-6"><a href="controle-de-fluxo-e-repetição.html#cb112-6" tabindex="-1"></a>acao <span class="ot">&lt;-</span> <span class="fu">sample</span>(acoes, <span class="dv">1</span>)</span>
-<span id="cb112-7"><a href="controle-de-fluxo-e-repetição.html#cb112-7" tabindex="-1"></a></span>
-<span id="cb112-8"><a href="controle-de-fluxo-e-repetição.html#cb112-8" tabindex="-1"></a><span class="fu">print</span>(acao)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="controle-de-fluxo-e-repetição.html#cb157-1" tabindex="-1"></a>acoes <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;Aprender a programar em R&quot;</span>,</span>
+<span id="cb157-2"><a href="controle-de-fluxo-e-repetição.html#cb157-2" tabindex="-1"></a>        <span class="st">&quot;Fazer um café&quot;</span>,</span>
+<span id="cb157-3"><a href="controle-de-fluxo-e-repetição.html#cb157-3" tabindex="-1"></a>        <span class="st">&quot;Assistir um filme&quot;</span>,</span>
+<span id="cb157-4"><a href="controle-de-fluxo-e-repetição.html#cb157-4" tabindex="-1"></a>        <span class="st">&quot;Descansar&quot;</span>)</span>
+<span id="cb157-5"><a href="controle-de-fluxo-e-repetição.html#cb157-5" tabindex="-1"></a></span>
+<span id="cb157-6"><a href="controle-de-fluxo-e-repetição.html#cb157-6" tabindex="-1"></a>acao <span class="ot">&lt;-</span> <span class="fu">sample</span>(acoes, <span class="dv">1</span>)</span>
+<span id="cb157-7"><a href="controle-de-fluxo-e-repetição.html#cb157-7" tabindex="-1"></a></span>
+<span id="cb157-8"><a href="controle-de-fluxo-e-repetição.html#cb157-8" tabindex="-1"></a><span class="fu">print</span>(acao)</span></code></pre></div>
 <pre><code>## [1] &quot;Fazer um café&quot;</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="controle-de-fluxo-e-repetição.html#cb114-1" tabindex="-1"></a><span class="cf">while</span>(acao <span class="sc">!=</span> <span class="st">&quot;Descansar&quot;</span>) {</span>
-<span id="cb114-2"><a href="controle-de-fluxo-e-repetição.html#cb114-2" tabindex="-1"></a>  acao <span class="ot">&lt;-</span> <span class="fu">sample</span>(acoes, <span class="dv">1</span>)</span>
-<span id="cb114-3"><a href="controle-de-fluxo-e-repetição.html#cb114-3" tabindex="-1"></a>  <span class="fu">print</span>(acao)</span>
-<span id="cb114-4"><a href="controle-de-fluxo-e-repetição.html#cb114-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="controle-de-fluxo-e-repetição.html#cb159-1" tabindex="-1"></a><span class="cf">while</span>(acao <span class="sc">!=</span> <span class="st">&quot;Descansar&quot;</span>) {</span>
+<span id="cb159-2"><a href="controle-de-fluxo-e-repetição.html#cb159-2" tabindex="-1"></a>  acao <span class="ot">&lt;-</span> <span class="fu">sample</span>(acoes, <span class="dv">1</span>)</span>
+<span id="cb159-3"><a href="controle-de-fluxo-e-repetição.html#cb159-3" tabindex="-1"></a>  <span class="fu">print</span>(acao)</span>
+<span id="cb159-4"><a href="controle-de-fluxo-e-repetição.html#cb159-4" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;Assistir um filme&quot;
 ## [1] &quot;Descansar&quot;</code></pre>
 </div>
@@ -273,19 +279,19 @@ No exemplo abaixo, o <code>while</code> será executado somente se <code>acao</c
 O <code>for</code> aceita uma variável iterativa bem como um vetor.
 O loop é repetido, dando ao iterador cada elemento do vetor por vez.
 O caso mais simples é um vetor contendo inteiros.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="controle-de-fluxo-e-repetição.html#cb116-1" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
-<span id="cb116-2"><a href="controle-de-fluxo-e-repetição.html#cb116-2" tabindex="-1"></a>  j <span class="ot">&lt;-</span> i <span class="sc">^</span> <span class="dv">2</span></span>
-<span id="cb116-3"><a href="controle-de-fluxo-e-repetição.html#cb116-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;j = &quot;</span>, j))</span>
-<span id="cb116-4"><a href="controle-de-fluxo-e-repetição.html#cb116-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="controle-de-fluxo-e-repetição.html#cb161-1" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb161-2"><a href="controle-de-fluxo-e-repetição.html#cb161-2" tabindex="-1"></a>  j <span class="ot">&lt;-</span> i <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb161-3"><a href="controle-de-fluxo-e-repetição.html#cb161-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;j = &quot;</span>, j))</span>
+<span id="cb161-4"><a href="controle-de-fluxo-e-repetição.html#cb161-4" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;j =  1&quot;
 ## [1] &quot;j =  4&quot;
 ## [1] &quot;j =  9&quot;
 ## [1] &quot;j =  16&quot;
 ## [1] &quot;j =  25&quot;</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="controle-de-fluxo-e-repetição.html#cb118-1" tabindex="-1"></a><span class="cf">for</span>(month <span class="cf">in</span> month.name)</span>
-<span id="cb118-2"><a href="controle-de-fluxo-e-repetição.html#cb118-2" tabindex="-1"></a>{</span>
-<span id="cb118-3"><a href="controle-de-fluxo-e-repetição.html#cb118-3" tabindex="-1"></a> <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;The month of &quot;</span>, month))</span>
-<span id="cb118-4"><a href="controle-de-fluxo-e-repetição.html#cb118-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="controle-de-fluxo-e-repetição.html#cb163-1" tabindex="-1"></a><span class="cf">for</span>(month <span class="cf">in</span> month.name)</span>
+<span id="cb163-2"><a href="controle-de-fluxo-e-repetição.html#cb163-2" tabindex="-1"></a>{</span>
+<span id="cb163-3"><a href="controle-de-fluxo-e-repetição.html#cb163-3" tabindex="-1"></a> <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;The month of &quot;</span>, month))</span>
+<span id="cb163-4"><a href="controle-de-fluxo-e-repetição.html#cb163-4" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;The month of January&quot;
 ## [1] &quot;The month of February&quot;
 ## [1] &quot;The month of March&quot;
@@ -299,23 +305,23 @@ O caso mais simples é um vetor contendo inteiros.</p>
 ## [1] &quot;The month of November&quot;
 ## [1] &quot;The month of December&quot;</code></pre>
 <p>No exemplo abaixo, sorteamos 10 números entre 1 e 100 e, para cada número, se ele for par, calculamos o quadrado, se for impar, somamos 1.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="controle-de-fluxo-e-repetição.html#cb120-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
-<span id="cb120-2"><a href="controle-de-fluxo-e-repetição.html#cb120-2" tabindex="-1"></a></span>
-<span id="cb120-3"><a href="controle-de-fluxo-e-repetição.html#cb120-3" tabindex="-1"></a>numeros <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">10</span>)</span>
-<span id="cb120-4"><a href="controle-de-fluxo-e-repetição.html#cb120-4" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(numeros))</span>
-<span id="cb120-5"><a href="controle-de-fluxo-e-repetição.html#cb120-5" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(numeros)) {</span>
-<span id="cb120-6"><a href="controle-de-fluxo-e-repetição.html#cb120-6" tabindex="-1"></a>  <span class="cf">if</span>(numeros[i] <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb120-7"><a href="controle-de-fluxo-e-repetição.html#cb120-7" tabindex="-1"></a>    resultado[i] <span class="ot">&lt;-</span> numeros[i]<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb120-8"><a href="controle-de-fluxo-e-repetição.html#cb120-8" tabindex="-1"></a>  <span class="cf">else</span></span>
-<span id="cb120-9"><a href="controle-de-fluxo-e-repetição.html#cb120-9" tabindex="-1"></a>    resultado[i] <span class="ot">&lt;-</span> numeros[i]<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb120-10"><a href="controle-de-fluxo-e-repetição.html#cb120-10" tabindex="-1"></a>}</span>
-<span id="cb120-11"><a href="controle-de-fluxo-e-repetição.html#cb120-11" tabindex="-1"></a></span>
-<span id="cb120-12"><a href="controle-de-fluxo-e-repetição.html#cb120-12" tabindex="-1"></a><span class="fu">rbind</span>(numeros, resultado)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="controle-de-fluxo-e-repetição.html#cb165-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb165-2"><a href="controle-de-fluxo-e-repetição.html#cb165-2" tabindex="-1"></a></span>
+<span id="cb165-3"><a href="controle-de-fluxo-e-repetição.html#cb165-3" tabindex="-1"></a>numeros <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb165-4"><a href="controle-de-fluxo-e-repetição.html#cb165-4" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(numeros))</span>
+<span id="cb165-5"><a href="controle-de-fluxo-e-repetição.html#cb165-5" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(numeros)) {</span>
+<span id="cb165-6"><a href="controle-de-fluxo-e-repetição.html#cb165-6" tabindex="-1"></a>  <span class="cf">if</span>(numeros[i] <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb165-7"><a href="controle-de-fluxo-e-repetição.html#cb165-7" tabindex="-1"></a>    resultado[i] <span class="ot">&lt;-</span> numeros[i]<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb165-8"><a href="controle-de-fluxo-e-repetição.html#cb165-8" tabindex="-1"></a>  <span class="cf">else</span></span>
+<span id="cb165-9"><a href="controle-de-fluxo-e-repetição.html#cb165-9" tabindex="-1"></a>    resultado[i] <span class="ot">&lt;-</span> numeros[i]<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb165-10"><a href="controle-de-fluxo-e-repetição.html#cb165-10" tabindex="-1"></a>}</span>
+<span id="cb165-11"><a href="controle-de-fluxo-e-repetição.html#cb165-11" tabindex="-1"></a></span>
+<span id="cb165-12"><a href="controle-de-fluxo-e-repetição.html#cb165-12" tabindex="-1"></a><span class="fu">rbind</span>(numeros, resultado)</span></code></pre></div>
 <pre><code>##           [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
 ## numeros     85   79   70    6   32    8   17   93   81    76
 ## resultado   86   80 4900   36 1024   64   18   94   82  5776</code></pre>
 <p>Uma alternativa é usar a função <code>ifelse</code> para fazer a mesma operação acima.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="controle-de-fluxo-e-repetição.html#cb122-1" tabindex="-1"></a><span class="fu">ifelse</span>(numeros <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, numeros<span class="sc">^</span><span class="dv">2</span>, numeros<span class="sc">+</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="controle-de-fluxo-e-repetição.html#cb167-1" tabindex="-1"></a><span class="fu">ifelse</span>(numeros <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, numeros<span class="sc">^</span><span class="dv">2</span>, numeros<span class="sc">+</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##  [1]   86   80 4900   36 1024   64   18   94   82 5776</code></pre>
 </div>
 </div>
@@ -325,25 +331,25 @@ O caso mais simples é um vetor contendo inteiros.</p>
 <div id="criando-e-chamando-funções" class="section level5 hasAnchor" number="2.1.0.0.1">
 <h5><span class="header-section-number">2.1.0.0.1</span> Criando e chamando funções<a href="controle-de-fluxo-e-repetição.html#criando-e-chamando-funções" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Uma função é criada de maneira parecida com a criação de variáveis, atribuindo um nome à função.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="controle-de-fluxo-e-repetição.html#cb124-1" tabindex="-1"></a>hipotenusa <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb124-2"><a href="controle-de-fluxo-e-repetição.html#cb124-2" tabindex="-1"></a>  <span class="fu">sqrt</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb124-3"><a href="controle-de-fluxo-e-repetição.html#cb124-3" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="controle-de-fluxo-e-repetição.html#cb169-1" tabindex="-1"></a>hipotenusa <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb169-2"><a href="controle-de-fluxo-e-repetição.html#cb169-2" tabindex="-1"></a>  <span class="fu">sqrt</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb169-3"><a href="controle-de-fluxo-e-repetição.html#cb169-3" tabindex="-1"></a>}</span></code></pre></div>
 <p>Aqui, <code>hipotenusa</code> é o nome da função criada, <code>x</code> e <code>y</code> são os argumentos e o conteúdo entre chaves é chamado de corpo da função.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="controle-de-fluxo-e-repetição.html#cb125-1" tabindex="-1"></a><span class="fu">hipotenusa</span>(<span class="dv">3</span>, <span class="dv">4</span>) <span class="co">#sem nomear, os parametros sao considerados seguindo a ordem de definicao da funcao</span></span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="controle-de-fluxo-e-repetição.html#cb170-1" tabindex="-1"></a><span class="fu">hipotenusa</span>(<span class="dv">3</span>, <span class="dv">4</span>) <span class="co">#sem nomear, os parametros sao considerados seguindo a ordem de definicao da funcao</span></span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="controle-de-fluxo-e-repetição.html#cb127-1" tabindex="-1"></a><span class="fu">hipotenusa</span>(<span class="at">y=</span><span class="dv">24</span>, <span class="at">x=</span><span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="controle-de-fluxo-e-repetição.html#cb172-1" tabindex="-1"></a><span class="fu">hipotenusa</span>(<span class="at">y=</span><span class="dv">24</span>, <span class="at">x=</span><span class="dv">7</span>)</span></code></pre></div>
 <pre><code>## [1] 25</code></pre>
 <p>Pode-se definir valores padrão para argumentos de uma função.
 Na função abaixo, que calcula a potenciação, caso <code>exp</code> não seja definido, a função calculará o quadrado do número dado.</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="controle-de-fluxo-e-repetição.html#cb129-1" tabindex="-1"></a>potencia <span class="ot">&lt;-</span> <span class="cf">function</span>(base, <span class="at">exp =</span> <span class="dv">2</span>) {</span>
-<span id="cb129-2"><a href="controle-de-fluxo-e-repetição.html#cb129-2" tabindex="-1"></a>  base <span class="sc">^</span> exp</span>
-<span id="cb129-3"><a href="controle-de-fluxo-e-repetição.html#cb129-3" tabindex="-1"></a>}</span>
-<span id="cb129-4"><a href="controle-de-fluxo-e-repetição.html#cb129-4" tabindex="-1"></a></span>
-<span id="cb129-5"><a href="controle-de-fluxo-e-repetição.html#cb129-5" tabindex="-1"></a><span class="fu">potencia</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="controle-de-fluxo-e-repetição.html#cb174-1" tabindex="-1"></a>potencia <span class="ot">&lt;-</span> <span class="cf">function</span>(base, <span class="at">exp =</span> <span class="dv">2</span>) {</span>
+<span id="cb174-2"><a href="controle-de-fluxo-e-repetição.html#cb174-2" tabindex="-1"></a>  base <span class="sc">^</span> exp</span>
+<span id="cb174-3"><a href="controle-de-fluxo-e-repetição.html#cb174-3" tabindex="-1"></a>}</span>
+<span id="cb174-4"><a href="controle-de-fluxo-e-repetição.html#cb174-4" tabindex="-1"></a></span>
+<span id="cb174-5"><a href="controle-de-fluxo-e-repetição.html#cb174-5" tabindex="-1"></a><span class="fu">potencia</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 100</code></pre>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="controle-de-fluxo-e-repetição.html#cb131-1" tabindex="-1"></a><span class="fu">potencia</span>(<span class="dv">10</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="controle-de-fluxo-e-repetição.html#cb176-1" tabindex="-1"></a><span class="fu">potencia</span>(<span class="dv">10</span>, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 1000</code></pre>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="controle-de-fluxo-e-repetição.html#cb133-1" tabindex="-1"></a><span class="fu">potencia</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="cn">NA</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="controle-de-fluxo-e-repetição.html#cb178-1" tabindex="-1"></a><span class="fu">potencia</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="cn">NA</span>))</span></code></pre></div>
 <pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100  NA</code></pre>
 </div>
 </div>
@@ -352,17 +358,17 @@ Na função abaixo, que calcula a potenciação, caso <code>exp</code> não seja
 <ol style="list-style-type: decimal">
 <li>O comando abaixo gera amostras aleatórias seguindo a distribuição binomial para simular o lançamento de 100 moeda.</li>
 </ol>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="controle-de-fluxo-e-repetição.html#cb135-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb135-2"><a href="controle-de-fluxo-e-repetição.html#cb135-2" tabindex="-1"></a>lancamentos <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="dv">1</span>, <span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="controle-de-fluxo-e-repetição.html#cb180-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb180-2"><a href="controle-de-fluxo-e-repetição.html#cb180-2" tabindex="-1"></a>lancamentos <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="dv">1</span>, <span class="fl">0.5</span>)</span></code></pre></div>
 <p>Considere que 0 represente “cara” e 1 represente “coroa.” Crie uma variavel para armazenar os lançamentos como um fator contendo os níveis “cara” e “coroa”.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Para fins de exemplo, neste exercício considere apenas uma amostra de 1000 linhas dos dados armazenados no dataframe <code>flights</code> do pacote <code>nycflights</code>.</li>
 </ol>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="controle-de-fluxo-e-repetição.html#cb136-1" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="controle-de-fluxo-e-repetição.html#cb181-1" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span></code></pre></div>
 <pre><code>## Warning: package &#39;nycflights13&#39; was built under R version 4.2.3</code></pre>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="controle-de-fluxo-e-repetição.html#cb138-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb138-2"><a href="controle-de-fluxo-e-repetição.html#cb138-2" tabindex="-1"></a></span>
-<span id="cb138-3"><a href="controle-de-fluxo-e-repetição.html#cb138-3" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(flights), <span class="dv">1000</span>),]</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="controle-de-fluxo-e-repetição.html#cb183-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb183-2"><a href="controle-de-fluxo-e-repetição.html#cb183-2" tabindex="-1"></a></span>
+<span id="cb183-3"><a href="controle-de-fluxo-e-repetição.html#cb183-3" tabindex="-1"></a>flights <span class="ot">&lt;-</span> flights[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(flights), <span class="dv">1000</span>),]</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>De acordo com a descrição do mesmo (veja <code>?flights</code>), a coluna <code>distance</code> está registrada em milhas. Crie uma função que receba como argumento um número em milhas e converta-o para kilometros (para um resultado aproximado, multiplique o valor de comprimento por <span class="math inline">\(1{,}609\)</span>). Em seguida, crie um novo dataframe, <code>flights2</code> em que sua coluna distance esteja representada em km.</p></li>
 <li><p>Crie uma sequencia de comandos utilizando a estrutura <code>for</code> para classificar cada uma das distâncias obtidas no item anterior em “curta distância” (até 500km), “média distância” (entre 500km e 2000km) e “longa distância” (mais que 2000km). Armazene o resultado obtido em uma nova coluna no datafrarme <code>flights</code>. Transforme essa coluna em fator.</p></li>

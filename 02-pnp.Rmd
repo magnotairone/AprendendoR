@@ -1,6 +1,6 @@
 # Controle de fluxo e repetição
 
-> Este capítulo foi escrito baseado em Cotton (2013) e o conteúdo apresentado aqui foi usado como base para o minicurso "R para não-programadores".
+> Este capítulo foi escrito baseado em Cotton (2013) e o conteúdo apresentado aqui foi usado como base para o minicurso "R para não-programadores" que ministrei junto com a prof. Marina Bicudo.
 
 
 Por algum motivo particular, você pode querer executar ou não um determinado trecho do seu código.

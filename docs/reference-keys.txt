@@ -12,6 +12,8 @@ nomeando-linhas-columas-e-dimensões
 indexação
 combinando-matrizes
 operações-com-matrizes
+data-frames
+manipulação-de-dataframes
 controle-de-fluxo-e-repetição
 if-e-else
 estruturas-de-repetição
@@ -33,4 +35,7 @@ criando-variáveis-colunas-com-mutate
 summarise-colapsa-a-tabela-toda-em-apenas-uma-linha
 group_by-muda-a-unidade-de-análise-de-toda-a-tabela-para-os-grupos-definidos
 desafio
-ggplot
+vizualização-com-ggplot
+criando-um-objeto-ggplot
+gráfico-de-dispersão
+gráfico-de-colunas

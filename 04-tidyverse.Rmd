@@ -14,19 +14,19 @@ install.packages("tidyverse")
 ```
 
 E carregar a biblioteca:
-```{r}
+```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
 ```
-## O operador pipe ( %>% ) da library `magrittr`
+## O operador pipe ( `%>%` ) da library `magrittr`
 
 Atalho no teclado: `Ctrl + Shift + M`
 
 Passa o objeto do lado esquerdo como primeiro argumento (ou
 .argumento) da função do lado direito:
 
-- \textbf{x} `%>%` f(y) é equivalente a f(\textbf{x},y)
+- `x %>% f(y)` é equivalente a f(\textbf{x},y)
 
-- \textbf{y} `%>%` f(x,`.`,z) é equivalente a f(x,\textbf{y},z)
+- `y %>% f(x, .,z)` é equivalente a f(x,\textbf{y},z)
 
 Na prática, vamos supor que queremos somar todos os elementos do `vetor` e em seguida tirar a raiz quadrada desta soma:
 

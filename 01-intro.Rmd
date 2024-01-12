@@ -272,3 +272,74 @@ uma_matriz * outra_matriz
 ```
 
 Cuidado: as matrizes e vetores devem ter tamanhos compativeis!
+
+
+### Data frames
+
+```{r}
+um_data_frame <- data.frame(
+  x = letters[1:5],       #coluna de caracteres
+  y = rnorm(5),           #coluna de numeros
+  z = runif(5) > 0.5      #coluna de logicos
+)
+um_data_frame
+
+class(um_data_frame)
+
+rownames(um_data_frame) #nome das linhas do dataframe
+
+colnames(um_data_frame) #nome das colunas do dataframe
+
+length(um_data_frame) #retorna o numero de colunas do dataframe (diferente de matriz)
+
+ncol(um_data_frame) #numero de linhas do dataframe
+
+nrow(um_data_frame) #numero de colunas do dataframe
+
+dim(um_data_frame) #dimensao do dataframe
+
+#### Indexação de dataframes
+
+um_data_frame[2:3, -3] #o segundo e o terceiro elementos das duas primeiras colunas do dataframe
+
+class(um_data_frame[2:3, -3]) #observe que o resultado é um dataframe
+
+um_data_frame[c(FALSE, TRUE, TRUE, FALSE, FALSE), c("x", "y")] #mesmo resultado que acima
+
+um_data_frame[2:3, 1]
+
+class(um_data_frame[2:3, 1]) #como selecionamos um vetor, a classe é a mesma do elemento selecionado
+
+
+um_data_frame$x #seleciona a coluna x
+
+um_data_frame$x[2:3] #seleciona os elementos 2 e 3 da coluna x
+
+um_data_frame[[1]][2:3] #equivalente ao comando acima
+
+um_data_frame[["x"]][2:3] #equivalente ao comando acima
+```
+
+#### Manipulação de dataframes
+
+```{r}
+novo_data_frame <- data.frame( #mesmas colunas que o dataframe anterior, ordem diferente
+  z = rlnorm(5), #números distribuídos seguindo a distribuição lognormal
+  y = sample(5), #número 1 a 5 distribuidos em uma ordem aleatória
+  x = letters[3:7])
+
+rbind(um_data_frame, novo_data_frame) #qual a dimensão deste elemento?
+
+cbind(um_data_frame, novo_data_frame) #qual a dimensão deste elemento?
+```
+
+
+```{r eval=FALSE}
+?merge #Para mesclar dois dataframes, devemos considerar uma coluna que contenha algum identificador único para cada elemento.
+```
+
+```{r}
+merge(um_data_frame, novo_data_frame, by = "x")  #mescla os dataframes atraves da coluna 'x'
+
+merge(um_data_frame, novo_data_frame, by = "x", all = TRUE) #o que o argumento all=TRUE faz?
+```

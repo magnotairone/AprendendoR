@@ -23,7 +23,7 @@
 <meta name="author" content="Magno TF Severino" />
 
 
-<meta name="date" content="2023-12-23" />
+<meta name="date" content="2024-01-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#vetores"><i class="fa fa-check"></i><b>1.4.1</b> Vetores</a></li>
 <li class="chapter" data-level="1.4.2" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#matrizes"><i class="fa fa-check"></i><b>1.4.2</b> Matrizes</a></li>
+<li class="chapter" data-level="1.4.3" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#data-frames"><i class="fa fa-check"></i><b>1.4.3</b> Data frames</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="controle-de-fluxo-e-repetição.html"><a href="controle-de-fluxo-e-repetição.html"><i class="fa fa-check"></i><b>2</b> Controle de fluxo e repetição</a>
@@ -166,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html"><i class="fa fa-check"></i><b>4</b> O pacote <code>tidyverse</code></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#o-operador-pipe-da-library-magrittr"><i class="fa fa-check"></i><b>4.1</b> O operador pipe ( %&gt;% ) da library <code>magrittr</code></a></li>
+<li class="chapter" data-level="4.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#o-operador-pipe-da-library-magrittr"><i class="fa fa-check"></i><b>4.1</b> O operador pipe ( <code>%&gt;%</code> ) da library <code>magrittr</code></a></li>
 <li class="chapter" data-level="4.2" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#transformação-de-dados-com-dplyr"><i class="fa fa-check"></i><b>4.2</b> Transformação de Dados com <code>dplyr</code></a></li>
 <li class="chapter" data-level="4.3" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#filtrando-linhas-com-filter"><i class="fa fa-check"></i><b>4.3</b> Filtrando linhas com <code>filter()</code></a></li>
 <li class="chapter" data-level="4.4" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#arranjando-linhas-com-arrange"><i class="fa fa-check"></i><b>4.4</b> Arranjando linhas com <code>arrange()</code></a></li>
@@ -178,7 +179,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.8.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#desafio"><i class="fa fa-check"></i><b>4.8.1</b> DESAFIO:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot</code></a></li>
+<li class="chapter" data-level="5" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html"><i class="fa fa-check"></i><b>5</b> Vizualização com <code>ggplot</code></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#criando-um-objeto-ggplot"><i class="fa fa-check"></i><b>5.1</b> Criando um objeto ggplot</a></li>
+<li class="chapter" data-level="5.2" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#gráfico-de-dispersão"><i class="fa fa-check"></i><b>5.2</b> Gráfico de Dispersão</a></li>
+<li class="chapter" data-level="5.3" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#gráfico-de-colunas"><i class="fa fa-check"></i><b>5.3</b> Gráfico de Colunas</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -461,6 +467,101 @@ Para preencher a matrix por linhas, basta especificar o argumento <tt>byrow=TRUE
 ## L3 18  98 242
 ## L4 32 128 288</code></pre>
 <p>Cuidado: as matrizes e vetores devem ter tamanhos compativeis!</p>
+</div>
+</div>
+<div id="data-frames" class="section level3 hasAnchor" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Data frames<a href="básicos-da-linguagem-r.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="básicos-da-linguagem-r.html#cb103-1" tabindex="-1"></a>um_data_frame <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb103-2"><a href="básicos-da-linguagem-r.html#cb103-2" tabindex="-1"></a>  <span class="at">x =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],       <span class="co">#coluna de caracteres</span></span>
+<span id="cb103-3"><a href="básicos-da-linguagem-r.html#cb103-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">5</span>),           <span class="co">#coluna de numeros</span></span>
+<span id="cb103-4"><a href="básicos-da-linguagem-r.html#cb103-4" tabindex="-1"></a>  <span class="at">z =</span> <span class="fu">runif</span>(<span class="dv">5</span>) <span class="sc">&gt;</span> <span class="fl">0.5</span>      <span class="co">#coluna de logicos</span></span>
+<span id="cb103-5"><a href="básicos-da-linguagem-r.html#cb103-5" tabindex="-1"></a>)</span>
+<span id="cb103-6"><a href="básicos-da-linguagem-r.html#cb103-6" tabindex="-1"></a>um_data_frame</span></code></pre></div>
+<pre><code>##   x           y     z
+## 1 a -0.81800900 FALSE
+## 2 b  0.07101737  TRUE
+## 3 c  0.89552755 FALSE
+## 4 d  0.77976176  TRUE
+## 5 e  0.37061145  TRUE</code></pre>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="básicos-da-linguagem-r.html#cb105-1" tabindex="-1"></a><span class="fu">class</span>(um_data_frame)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="básicos-da-linguagem-r.html#cb107-1" tabindex="-1"></a><span class="fu">rownames</span>(um_data_frame) <span class="co">#nome das linhas do dataframe</span></span></code></pre></div>
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot;</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="básicos-da-linguagem-r.html#cb109-1" tabindex="-1"></a><span class="fu">colnames</span>(um_data_frame) <span class="co">#nome das colunas do dataframe</span></span></code></pre></div>
+<pre><code>## [1] &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="básicos-da-linguagem-r.html#cb111-1" tabindex="-1"></a><span class="fu">length</span>(um_data_frame) <span class="co">#retorna o numero de colunas do dataframe (diferente de matriz)</span></span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="básicos-da-linguagem-r.html#cb113-1" tabindex="-1"></a><span class="fu">ncol</span>(um_data_frame) <span class="co">#numero de linhas do dataframe</span></span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="básicos-da-linguagem-r.html#cb115-1" tabindex="-1"></a><span class="fu">nrow</span>(um_data_frame) <span class="co">#numero de colunas do dataframe</span></span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="básicos-da-linguagem-r.html#cb117-1" tabindex="-1"></a><span class="fu">dim</span>(um_data_frame) <span class="co">#dimensao do dataframe</span></span></code></pre></div>
+<pre><code>## [1] 5 3</code></pre>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="básicos-da-linguagem-r.html#cb119-1" tabindex="-1"></a><span class="do">#### Indexação de dataframes</span></span>
+<span id="cb119-2"><a href="básicos-da-linguagem-r.html#cb119-2" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="básicos-da-linguagem-r.html#cb119-3" tabindex="-1"></a>um_data_frame[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>] <span class="co">#o segundo e o terceiro elementos das duas primeiras colunas do dataframe</span></span></code></pre></div>
+<pre><code>##   x          y
+## 2 b 0.07101737
+## 3 c 0.89552755</code></pre>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="básicos-da-linguagem-r.html#cb121-1" tabindex="-1"></a><span class="fu">class</span>(um_data_frame[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">3</span>]) <span class="co">#observe que o resultado é um dataframe</span></span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="básicos-da-linguagem-r.html#cb123-1" tabindex="-1"></a>um_data_frame[<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>), <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)] <span class="co">#mesmo resultado que acima</span></span></code></pre></div>
+<pre><code>##   x          y
+## 2 b 0.07101737
+## 3 c 0.89552755</code></pre>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="básicos-da-linguagem-r.html#cb125-1" tabindex="-1"></a>um_data_frame[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;b&quot; &quot;c&quot;</code></pre>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="básicos-da-linguagem-r.html#cb127-1" tabindex="-1"></a><span class="fu">class</span>(um_data_frame[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span>]) <span class="co">#como selecionamos um vetor, a classe é a mesma do elemento selecionado</span></span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="básicos-da-linguagem-r.html#cb129-1" tabindex="-1"></a>um_data_frame<span class="sc">$</span>x <span class="co">#seleciona a coluna x</span></span></code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="básicos-da-linguagem-r.html#cb131-1" tabindex="-1"></a>um_data_frame<span class="sc">$</span>x[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>] <span class="co">#seleciona os elementos 2 e 3 da coluna x</span></span></code></pre></div>
+<pre><code>## [1] &quot;b&quot; &quot;c&quot;</code></pre>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="básicos-da-linguagem-r.html#cb133-1" tabindex="-1"></a>um_data_frame[[<span class="dv">1</span>]][<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>] <span class="co">#equivalente ao comando acima</span></span></code></pre></div>
+<pre><code>## [1] &quot;b&quot; &quot;c&quot;</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="básicos-da-linguagem-r.html#cb135-1" tabindex="-1"></a>um_data_frame[[<span class="st">&quot;x&quot;</span>]][<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>] <span class="co">#equivalente ao comando acima</span></span></code></pre></div>
+<pre><code>## [1] &quot;b&quot; &quot;c&quot;</code></pre>
+<div id="manipulação-de-dataframes" class="section level4 hasAnchor" number="1.4.3.1">
+<h4><span class="header-section-number">1.4.3.1</span> Manipulação de dataframes<a href="básicos-da-linguagem-r.html#manipulação-de-dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="básicos-da-linguagem-r.html#cb137-1" tabindex="-1"></a>novo_data_frame <span class="ot">&lt;-</span> <span class="fu">data.frame</span>( <span class="co">#mesmas colunas que o dataframe anterior, ordem diferente</span></span>
+<span id="cb137-2"><a href="básicos-da-linguagem-r.html#cb137-2" tabindex="-1"></a>  <span class="at">z =</span> <span class="fu">rlnorm</span>(<span class="dv">5</span>), <span class="co">#números distribuídos seguindo a distribuição lognormal</span></span>
+<span id="cb137-3"><a href="básicos-da-linguagem-r.html#cb137-3" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">sample</span>(<span class="dv">5</span>), <span class="co">#número 1 a 5 distribuidos em uma ordem aleatória</span></span>
+<span id="cb137-4"><a href="básicos-da-linguagem-r.html#cb137-4" tabindex="-1"></a>  <span class="at">x =</span> letters[<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>])</span>
+<span id="cb137-5"><a href="básicos-da-linguagem-r.html#cb137-5" tabindex="-1"></a></span>
+<span id="cb137-6"><a href="básicos-da-linguagem-r.html#cb137-6" tabindex="-1"></a><span class="fu">rbind</span>(um_data_frame, novo_data_frame) <span class="co">#qual a dimensão deste elemento?</span></span></code></pre></div>
+<pre><code>##    x           y         z
+## 1  a -0.81800900 0.0000000
+## 2  b  0.07101737 1.0000000
+## 3  c  0.89552755 0.0000000
+## 4  d  0.77976176 1.0000000
+## 5  e  0.37061145 1.0000000
+## 6  c  4.00000000 0.9076837
+## 7  d  2.00000000 5.0416926
+## 8  e  3.00000000 0.5523121
+## 9  f  5.00000000 1.1606877
+## 10 g  1.00000000 0.8396083</code></pre>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="básicos-da-linguagem-r.html#cb139-1" tabindex="-1"></a><span class="fu">cbind</span>(um_data_frame, novo_data_frame) <span class="co">#qual a dimensão deste elemento?</span></span></code></pre></div>
+<pre><code>##   x           y     z         z y x
+## 1 a -0.81800900 FALSE 0.9076837 4 c
+## 2 b  0.07101737  TRUE 5.0416926 2 d
+## 3 c  0.89552755 FALSE 0.5523121 3 e
+## 4 d  0.77976176  TRUE 1.1606877 5 f
+## 5 e  0.37061145  TRUE 0.8396083 1 g</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="básicos-da-linguagem-r.html#cb141-1" tabindex="-1"></a>?merge <span class="co">#Para mesclar dois dataframes, devemos considerar uma coluna que contenha algum identificador único para cada elemento.</span></span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="básicos-da-linguagem-r.html#cb142-1" tabindex="-1"></a><span class="fu">merge</span>(um_data_frame, novo_data_frame, <span class="at">by =</span> <span class="st">&quot;x&quot;</span>)  <span class="co">#mescla os dataframes atraves da coluna &#39;x&#39;</span></span></code></pre></div>
+<pre><code>##   x       y.x   z.x       z.y y.y
+## 1 c 0.8955275 FALSE 0.9076837   4
+## 2 d 0.7797618  TRUE 5.0416926   2
+## 3 e 0.3706115  TRUE 0.5523121   3</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="básicos-da-linguagem-r.html#cb144-1" tabindex="-1"></a><span class="fu">merge</span>(um_data_frame, novo_data_frame, <span class="at">by =</span> <span class="st">&quot;x&quot;</span>, <span class="at">all =</span> <span class="cn">TRUE</span>) <span class="co">#o que o argumento all=TRUE faz?</span></span></code></pre></div>
+<pre><code>##   x         y.x   z.x       z.y y.y
+## 1 a -0.81800900 FALSE        NA  NA
+## 2 b  0.07101737  TRUE        NA  NA
+## 3 c  0.89552755 FALSE 0.9076837   4
+## 4 d  0.77976176  TRUE 5.0416926   2
+## 5 e  0.37061145  TRUE 0.5523121   3
+## 6 f          NA    NA 1.1606877   5
+## 7 g          NA    NA 0.8396083   1</code></pre>
 
 </div>
 </div>

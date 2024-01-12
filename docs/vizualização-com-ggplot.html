@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 5 ggplot | Aprendendo R</title>
+  <title>Capítulo 5 Vizualização com ggplot | Aprendendo R</title>
   <meta name="description" content="Este livro é um tutorial básico para quem quer começar a aprender a programar na linguagem R." />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 5 ggplot | Aprendendo R" />
+  <meta property="og:title" content="Capítulo 5 Vizualização com ggplot | Aprendendo R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Este livro é um tutorial básico para quem quer começar a aprender a programar na linguagem R." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 5 ggplot | Aprendendo R" />
+  <meta name="twitter:title" content="Capítulo 5 Vizualização com ggplot | Aprendendo R" />
   
   <meta name="twitter:description" content="Este livro é um tutorial básico para quem quer começar a aprender a programar na linguagem R." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Magno TF Severino" />
 
 
-<meta name="date" content="2024-01-11" />
+<meta name="date" content="2024-01-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -167,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html"><i class="fa fa-check"></i><b>4</b> O pacote <code>tidyverse</code></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#o-operador-pipe-da-library-magrittr"><i class="fa fa-check"></i><b>4.1</b> O operador pipe ( %&gt;% ) da library <code>magrittr</code></a></li>
+<li class="chapter" data-level="4.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#o-operador-pipe-da-library-magrittr"><i class="fa fa-check"></i><b>4.1</b> O operador pipe ( <code>%&gt;%</code> ) da library <code>magrittr</code></a></li>
 <li class="chapter" data-level="4.2" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#transformação-de-dados-com-dplyr"><i class="fa fa-check"></i><b>4.2</b> Transformação de Dados com <code>dplyr</code></a></li>
 <li class="chapter" data-level="4.3" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#filtrando-linhas-com-filter"><i class="fa fa-check"></i><b>4.3</b> Filtrando linhas com <code>filter()</code></a></li>
 <li class="chapter" data-level="4.4" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#arranjando-linhas-com-arrange"><i class="fa fa-check"></i><b>4.4</b> Arranjando linhas com <code>arrange()</code></a></li>
@@ -179,11 +179,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.8.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#desafio"><i class="fa fa-check"></i><b>4.8.1</b> DESAFIO:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot</code></a>
+<li class="chapter" data-level="5" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html"><i class="fa fa-check"></i><b>5</b> Vizualização com <code>ggplot</code></a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="ggplot.html"><a href="ggplot.html#criando-um-objeto-ggplot"><i class="fa fa-check"></i><b>5.1</b> Criando um objeto ggplot</a></li>
-<li class="chapter" data-level="5.2" data-path="ggplot.html"><a href="ggplot.html#gráfico-de-dispersão"><i class="fa fa-check"></i><b>5.2</b> Gráfico de Dispersão</a></li>
-<li class="chapter" data-level="5.3" data-path="ggplot.html"><a href="ggplot.html#gráfico-de-colunas"><i class="fa fa-check"></i><b>5.3</b> Gráfico de Colunas</a></li>
+<li class="chapter" data-level="5.1" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#criando-um-objeto-ggplot"><i class="fa fa-check"></i><b>5.1</b> Criando um objeto ggplot</a></li>
+<li class="chapter" data-level="5.2" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#gráfico-de-dispersão"><i class="fa fa-check"></i><b>5.2</b> Gráfico de Dispersão</a></li>
+<li class="chapter" data-level="5.3" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#gráfico-de-colunas"><i class="fa fa-check"></i><b>5.3</b> Gráfico de Colunas</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -206,8 +206,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ggplot" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Capítulo 5</span> <code>ggplot</code><a href="ggplot.html#ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="vizualização-com-ggplot" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Vizualização com <code>ggplot</code><a href="vizualização-com-ggplot.html#vizualização-com-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <blockquote>
 <p>Este capítulo foi escrito baseado em Cotton (2013) e o conteúdo apresentado aqui foi usado como base para o minicurso “R para não-programadores” que ministrei junto com a prof. Marina Bicudo.</p>
 </blockquote>
@@ -217,16 +217,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Essa função recebe o conjunto de dados que você deseja visualizar, por exemplo os dados de voos do pacote <code>nycflights</code>.</p>
 <p>Vamos supor que nosso objetivo seja entender a relação entre distância do voo e atraso. Para isso, utilizaremos um .</p>
 <div id="criando-um-objeto-ggplot" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Criando um objeto ggplot<a href="ggplot.html#criando-um-objeto-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">5.1</span> Criando um objeto ggplot<a href="vizualização-com-ggplot.html#criando-um-objeto-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Para começar, vamos criar um objeto ggplot utilizando a base de dados <code>flights</code>, calculando o atraso médio dos voos por destino.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="ggplot.html#cb316-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb316-2"><a href="ggplot.html#cb316-2" tabindex="-1"></a></span>
-<span id="cb316-3"><a href="ggplot.html#cb316-3" tabindex="-1"></a>atrasos <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
-<span id="cb316-4"><a href="ggplot.html#cb316-4" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(distance), <span class="sc">!</span><span class="fu">is.na</span>(arr_delay)) <span class="sc">%&gt;%</span></span>
-<span id="cb316-5"><a href="ggplot.html#cb316-5" tabindex="-1"></a>    <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
-<span id="cb316-6"><a href="ggplot.html#cb316-6" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">distance =</span> <span class="fu">mean</span>(distance),</span>
-<span id="cb316-7"><a href="ggplot.html#cb316-7" tabindex="-1"></a>              <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay))</span>
-<span id="cb316-8"><a href="ggplot.html#cb316-8" tabindex="-1"></a><span class="fu">head</span>(atrasos)</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="vizualização-com-ggplot.html#cb309-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb309-2"><a href="vizualização-com-ggplot.html#cb309-2" tabindex="-1"></a></span>
+<span id="cb309-3"><a href="vizualização-com-ggplot.html#cb309-3" tabindex="-1"></a>atrasos <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb309-4"><a href="vizualização-com-ggplot.html#cb309-4" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(distance), <span class="sc">!</span><span class="fu">is.na</span>(arr_delay)) <span class="sc">%&gt;%</span></span>
+<span id="cb309-5"><a href="vizualização-com-ggplot.html#cb309-5" tabindex="-1"></a>    <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
+<span id="cb309-6"><a href="vizualização-com-ggplot.html#cb309-6" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">distance =</span> <span class="fu">mean</span>(distance),</span>
+<span id="cb309-7"><a href="vizualização-com-ggplot.html#cb309-7" tabindex="-1"></a>              <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay))</span>
+<span id="cb309-8"><a href="vizualização-com-ggplot.html#cb309-8" tabindex="-1"></a><span class="fu">head</span>(atrasos)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   dest  distance delay
 ##   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
@@ -236,69 +236,69 @@ Essa função recebe o conjunto de dados que você deseja visualizar, por exempl
 ## 4 ANC      3370  -2.5 
 ## 5 ATL       757. 11.3 
 ## 6 AUS      1514.  6.02</code></pre>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="ggplot.html#cb318-1" tabindex="-1"></a>atrasos <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="vizualização-com-ggplot.html#cb311-1" tabindex="-1"></a>atrasos <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>()</span></code></pre></div>
 <p><img src="AprendendoR_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p>Observe que o objeto <code>ggplot</code> gerado representa apenas uma tela em branco, pois, dos três componentes básicos, apenas a base de dados (atrasos) foi especificada.</p>
 </div>
 <div id="gráfico-de-dispersão" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Gráfico de Dispersão<a href="ggplot.html#gráfico-de-dispersão" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">5.2</span> Gráfico de Dispersão<a href="vizualização-com-ggplot.html#gráfico-de-dispersão" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Nosso objetivo é criar um gráfico de dispersão, utilizando a geometria (<code>geom_point</code>).
 Vamos mapear as variáveis (x e y) dentro do componente de estética (aesthetics):</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="ggplot.html#cb319-1" tabindex="-1"></a>atrasos <span class="sc">%&gt;%</span> </span>
-<span id="cb319-2"><a href="ggplot.html#cb319-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
-<span id="cb319-3"><a href="ggplot.html#cb319-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="vizualização-com-ggplot.html#cb312-1" tabindex="-1"></a>atrasos <span class="sc">%&gt;%</span> </span>
+<span id="cb312-2"><a href="vizualização-com-ggplot.html#cb312-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
+<span id="cb312-3"><a href="vizualização-com-ggplot.html#cb312-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="AprendendoR_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 <p>Podemos criar uma variável que indica se houve atraso ou adiantamento, ajustando a cor dos pontos de acordo com essa nova variável:</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="ggplot.html#cb320-1" tabindex="-1"></a>atrasos <span class="sc">%&gt;%</span> </span>
-<span id="cb320-2"><a href="ggplot.html#cb320-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sinal =</span> <span class="fu">ifelse</span>(delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;- atrasou&quot;</span>, <span class="st">&quot;+ adiantou&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb320-3"><a href="ggplot.html#cb320-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
-<span id="cb320-4"><a href="ggplot.html#cb320-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sinal))</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="vizualização-com-ggplot.html#cb313-1" tabindex="-1"></a>atrasos <span class="sc">%&gt;%</span> </span>
+<span id="cb313-2"><a href="vizualização-com-ggplot.html#cb313-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sinal =</span> <span class="fu">ifelse</span>(delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;- atrasou&quot;</span>, <span class="st">&quot;+ adiantou&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb313-3"><a href="vizualização-com-ggplot.html#cb313-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
+<span id="cb313-4"><a href="vizualização-com-ggplot.html#cb313-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sinal))</span></code></pre></div>
 <p><img src="AprendendoR_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 <p>Além disso, adicionaremos uma camada () com a linha de tendência (equação da reta):</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="ggplot.html#cb321-1" tabindex="-1"></a>atrasos <span class="sc">%&gt;%</span> </span>
-<span id="cb321-2"><a href="ggplot.html#cb321-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sinal =</span> <span class="fu">ifelse</span>(delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;atrasou&quot;</span>, <span class="st">&quot;não atrasou&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb321-3"><a href="ggplot.html#cb321-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
-<span id="cb321-4"><a href="ggplot.html#cb321-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sinal)) <span class="sc">+</span></span>
-<span id="cb321-5"><a href="ggplot.html#cb321-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
-<span id="cb321-6"><a href="ggplot.html#cb321-6" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb321-7"><a href="ggplot.html#cb321-7" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="vizualização-com-ggplot.html#cb314-1" tabindex="-1"></a>atrasos <span class="sc">%&gt;%</span> </span>
+<span id="cb314-2"><a href="vizualização-com-ggplot.html#cb314-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sinal =</span> <span class="fu">ifelse</span>(delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;atrasou&quot;</span>, <span class="st">&quot;não atrasou&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb314-3"><a href="vizualização-com-ggplot.html#cb314-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
+<span id="cb314-4"><a href="vizualização-com-ggplot.html#cb314-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sinal)) <span class="sc">+</span></span>
+<span id="cb314-5"><a href="vizualização-com-ggplot.html#cb314-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
+<span id="cb314-6"><a href="vizualização-com-ggplot.html#cb314-6" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb314-7"><a href="vizualização-com-ggplot.html#cb314-7" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="AprendendoR_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 <p>Vamos agora personalizar o título do gráfico e dos eixos:</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="ggplot.html#cb323-1" tabindex="-1"></a>atrasos <span class="sc">%&gt;%</span> </span>
-<span id="cb323-2"><a href="ggplot.html#cb323-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sinal =</span> <span class="fu">ifelse</span>(delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;Atrasou&quot;</span>, <span class="st">&quot;Não atrasou&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb323-3"><a href="ggplot.html#cb323-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
-<span id="cb323-4"><a href="ggplot.html#cb323-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sinal)) <span class="sc">+</span></span>
-<span id="cb323-5"><a href="ggplot.html#cb323-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
-<span id="cb323-6"><a href="ggplot.html#cb323-6" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb323-7"><a href="ggplot.html#cb323-7" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb323-8"><a href="ggplot.html#cb323-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distância x Atrasos (vôos partindo de NY)&quot;</span>,</span>
-<span id="cb323-9"><a href="ggplot.html#cb323-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Distância (em milhas)&quot;</span>,</span>
-<span id="cb323-10"><a href="ggplot.html#cb323-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Atraso na decolagem (em minutos)&quot;</span>,</span>
-<span id="cb323-11"><a href="ggplot.html#cb323-11" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="vizualização-com-ggplot.html#cb316-1" tabindex="-1"></a>atrasos <span class="sc">%&gt;%</span> </span>
+<span id="cb316-2"><a href="vizualização-com-ggplot.html#cb316-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sinal =</span> <span class="fu">ifelse</span>(delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;Atrasou&quot;</span>, <span class="st">&quot;Não atrasou&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb316-3"><a href="vizualização-com-ggplot.html#cb316-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
+<span id="cb316-4"><a href="vizualização-com-ggplot.html#cb316-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sinal)) <span class="sc">+</span></span>
+<span id="cb316-5"><a href="vizualização-com-ggplot.html#cb316-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
+<span id="cb316-6"><a href="vizualização-com-ggplot.html#cb316-6" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb316-7"><a href="vizualização-com-ggplot.html#cb316-7" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb316-8"><a href="vizualização-com-ggplot.html#cb316-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distância x Atrasos (vôos partindo de NY)&quot;</span>,</span>
+<span id="cb316-9"><a href="vizualização-com-ggplot.html#cb316-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Distância (em milhas)&quot;</span>,</span>
+<span id="cb316-10"><a href="vizualização-com-ggplot.html#cb316-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Atraso na decolagem (em minutos)&quot;</span>,</span>
+<span id="cb316-11"><a href="vizualização-com-ggplot.html#cb316-11" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="AprendendoR_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 <p>Por fim, podemos ajustar a aparência geral do gráfico:</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="ggplot.html#cb325-1" tabindex="-1"></a>atrasos <span class="sc">%&gt;%</span> </span>
-<span id="cb325-2"><a href="ggplot.html#cb325-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sinal =</span> <span class="fu">ifelse</span>(delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;Atrasou&quot;</span>, <span class="st">&quot;Não atrasou&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb325-3"><a href="ggplot.html#cb325-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
-<span id="cb325-4"><a href="ggplot.html#cb325-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sinal)) <span class="sc">+</span></span>
-<span id="cb325-5"><a href="ggplot.html#cb325-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
-<span id="cb325-6"><a href="ggplot.html#cb325-6" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb325-7"><a href="ggplot.html#cb325-7" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb325-8"><a href="ggplot.html#cb325-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distância x Atrasos (vôos partindo de NY)&quot;</span>,</span>
-<span id="cb325-9"><a href="ggplot.html#cb325-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Distância (em milhas)&quot;</span>,</span>
-<span id="cb325-10"><a href="ggplot.html#cb325-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Atraso na decolagem (em minutos)&quot;</span>,</span>
-<span id="cb325-11"><a href="ggplot.html#cb325-11" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb325-12"><a href="ggplot.html#cb325-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="vizualização-com-ggplot.html#cb318-1" tabindex="-1"></a>atrasos <span class="sc">%&gt;%</span> </span>
+<span id="cb318-2"><a href="vizualização-com-ggplot.html#cb318-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sinal =</span> <span class="fu">ifelse</span>(delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;Atrasou&quot;</span>, <span class="st">&quot;Não atrasou&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb318-3"><a href="vizualização-com-ggplot.html#cb318-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distance, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
+<span id="cb318-4"><a href="vizualização-com-ggplot.html#cb318-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> sinal)) <span class="sc">+</span></span>
+<span id="cb318-5"><a href="vizualização-com-ggplot.html#cb318-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>
+<span id="cb318-6"><a href="vizualização-com-ggplot.html#cb318-6" tabindex="-1"></a>              <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb318-7"><a href="vizualização-com-ggplot.html#cb318-7" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb318-8"><a href="vizualização-com-ggplot.html#cb318-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distância x Atrasos (vôos partindo de NY)&quot;</span>,</span>
+<span id="cb318-9"><a href="vizualização-com-ggplot.html#cb318-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Distância (em milhas)&quot;</span>,</span>
+<span id="cb318-10"><a href="vizualização-com-ggplot.html#cb318-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Atraso na decolagem (em minutos)&quot;</span>,</span>
+<span id="cb318-11"><a href="vizualização-com-ggplot.html#cb318-11" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb318-12"><a href="vizualização-com-ggplot.html#cb318-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="AprendendoR_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
 </div>
 <div id="gráfico-de-colunas" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Gráfico de Colunas<a href="ggplot.html#gráfico-de-colunas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">5.3</span> Gráfico de Colunas<a href="vizualização-com-ggplot.html#gráfico-de-colunas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Vamos supor agora que nosso interesse seja criar um gráfico de colunas comparando o atraso médio dos 5 principais destinos que mais sofrem atrasos:</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="ggplot.html#cb327-1" tabindex="-1"></a>top_5 <span class="ot">&lt;-</span> atrasos <span class="sc">%&gt;%</span> <span class="fu">top_n</span>(<span class="dv">5</span>, delay)</span>
-<span id="cb327-2"><a href="ggplot.html#cb327-2" tabindex="-1"></a>top_5</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="vizualização-com-ggplot.html#cb320-1" tabindex="-1"></a>top_5 <span class="ot">&lt;-</span> atrasos <span class="sc">%&gt;%</span> <span class="fu">top_n</span>(<span class="dv">5</span>, delay)</span>
+<span id="cb320-2"><a href="vizualização-com-ggplot.html#cb320-2" tabindex="-1"></a>top_5</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 3
 ##   dest  distance delay
 ##   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
@@ -308,29 +308,36 @@ Vamos mapear as variáveis (x e y) dentro do componente de estética (aesthetics
 ## 4 TUL      1215   33.7
 ## 5 TYS       638.  24.1</code></pre>
 <p>Construindo nosso gráfico de colunas utilizando <code>geom_col()</code>:</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="ggplot.html#cb329-1" tabindex="-1"></a>top_5 <span class="sc">%&gt;%</span> </span>
-<span id="cb329-2"><a href="ggplot.html#cb329-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dest, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
-<span id="cb329-3"><a href="ggplot.html#cb329-3" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="vizualização-com-ggplot.html#cb322-1" tabindex="-1"></a>top_5 <span class="sc">%&gt;%</span> </span>
+<span id="cb322-2"><a href="vizualização-com-ggplot.html#cb322-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dest, <span class="at">y =</span> delay)) <span class="sc">+</span></span>
+<span id="cb322-3"><a href="vizualização-com-ggplot.html#cb322-3" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
 <p><img src="AprendendoR_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 <p>Perceba que as colunas estão organizadas em ordem alfabética. Para organizá-las em ordem decrescente da variável delay, podemos usar a função reorder:</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="ggplot.html#cb330-1" tabindex="-1"></a>top_5 <span class="sc">%&gt;%</span> </span>
-<span id="cb330-2"><a href="ggplot.html#cb330-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(dest, <span class="sc">-</span>delay), <span class="at">y =</span> delay)) <span class="sc">+</span></span>
-<span id="cb330-3"><a href="ggplot.html#cb330-3" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="vizualização-com-ggplot.html#cb323-1" tabindex="-1"></a>top_5 <span class="sc">%&gt;%</span> </span>
+<span id="cb323-2"><a href="vizualização-com-ggplot.html#cb323-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(dest, <span class="sc">-</span>delay), <span class="at">y =</span> delay)) <span class="sc">+</span></span>
+<span id="cb323-3"><a href="vizualização-com-ggplot.html#cb323-3" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
 <p><img src="AprendendoR_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <p>Podemos pintar todas as colunas da mesma cor:</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="ggplot.html#cb331-1" tabindex="-1"></a>top_5 <span class="sc">%&gt;%</span> </span>
-<span id="cb331-2"><a href="ggplot.html#cb331-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(dest, <span class="sc">-</span>delay), <span class="at">y =</span> delay)) <span class="sc">+</span></span>
-<span id="cb331-3"><a href="ggplot.html#cb331-3" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="vizualização-com-ggplot.html#cb324-1" tabindex="-1"></a>top_5 <span class="sc">%&gt;%</span> </span>
+<span id="cb324-2"><a href="vizualização-com-ggplot.html#cb324-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(dest, <span class="sc">-</span>delay), <span class="at">y =</span> delay)) <span class="sc">+</span></span>
+<span id="cb324-3"><a href="vizualização-com-ggplot.html#cb324-3" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
 <p><img src="AprendendoR_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 <p>Vamos agora alterar os títulos e a aparência do gráfico:</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="ggplot.html#cb332-1" tabindex="-1"></a>top_5 <span class="sc">%&gt;%</span> </span>
-<span id="cb332-2"><a href="ggplot.html#cb332-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(dest, <span class="sc">-</span>delay), <span class="at">y =</span> delay)) <span class="sc">+</span></span>
-<span id="cb332-3"><a href="ggplot.html#cb332-3" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb332-4"><a href="ggplot.html#cb332-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Destinos com maior atraso médio (top 5)&quot;</span>,</span>
-<span id="cb332-5"><a href="ggplot.html#cb332-5" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Atraso (em minutos)&quot;</span>,</span>
-<span id="cb332-6"><a href="ggplot.html#cb332-6" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb332-7"><a href="ggplot.html#cb332-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="vizualização-com-ggplot.html#cb325-1" tabindex="-1"></a>top_5 <span class="sc">%&gt;%</span> </span>
+<span id="cb325-2"><a href="vizualização-com-ggplot.html#cb325-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(dest, <span class="sc">-</span>delay), <span class="at">y =</span> delay)) <span class="sc">+</span></span>
+<span id="cb325-3"><a href="vizualização-com-ggplot.html#cb325-3" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb325-4"><a href="vizualização-com-ggplot.html#cb325-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Destinos com maior atraso médio (top 5)&quot;</span>,</span>
+<span id="cb325-5"><a href="vizualização-com-ggplot.html#cb325-5" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Atraso (em minutos)&quot;</span>,</span>
+<span id="cb325-6"><a href="vizualização-com-ggplot.html#cb325-6" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb325-7"><a href="vizualização-com-ggplot.html#cb325-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p><img src="AprendendoR_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<p>Veja mais detalhes em:</p>
+<ul>
+<li><a href="https://ggplot2-book.org/" class="uri">https://ggplot2-book.org/</a></li>
+<li><a href="https://www.r-graph-gallery.com/index.html" class="uri">https://www.r-graph-gallery.com/index.html</a></li>
+<li><a href="https://www.data-to-viz.com/" class="uri">https://www.data-to-viz.com/</a></li>
+<li><a href="https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf" class="uri">https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf</a></li>
+</ul>
 
 </div>
 </div>

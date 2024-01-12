@@ -1,3 +1,159 @@
-# `ggplot`
+# Vizualização com `ggplot`
 
-Em breve!
+> Este capítulo foi escrito baseado em Cotton (2013) e o conteúdo apresentado aqui foi usado como base para o minicurso "R para não-programadores" que ministrei junto com a prof. Marina Bicudo.
+
+`ggplot2` é uma biblioteca popular para criação de gráficos em R. 
+
+O `ggplot2` funciona seguindo o conceito de "grammar of graphics" (gramática dos gráficos). Você constrói um gráfico camada por camada, adicionando elementos conforme necessário.
+
+Comece criando um objeto `ggplot` com a função `ggplot()`. 
+Essa função recebe o conjunto de dados que você deseja visualizar, por exemplo os dados de voos do pacote `nycflights`.
+
+Vamos supor que nosso objetivo seja entender a relação entre distância do voo e atraso. Para isso, utilizaremos um \textbf{gráfico de dispersão}.
+
+## Criando um objeto ggplot
+
+Para começar, vamos criar um objeto ggplot utilizando a base de dados `flights`, calculando o atraso médio dos voos por destino.
+
+```{r}
+library(tidyverse)
+
+atrasos <- flights %>%
+    filter(!is.na(distance), !is.na(arr_delay)) %>%
+    group_by(dest) %>%
+    summarise(distance = mean(distance),
+              delay = mean(arr_delay))
+head(atrasos)
+```
+
+
+```{r, warning = FALSE}
+atrasos %>% ggplot()
+```
+
+Observe que o objeto `ggplot` gerado representa apenas uma tela em branco, pois, dos três componentes básicos, apenas a base de dados (atrasos) foi especificada.
+
+## Gráfico de Dispersão
+
+Nosso objetivo é criar um gráfico de dispersão, utilizando a geometria (`geom_point`). 
+Vamos mapear as variáveis (x e y) dentro do componente de estética (aesthetics):
+
+```{r}
+atrasos %>% 
+  ggplot(aes(x = distance, y = delay)) +
+  geom_point(color = "red")
+```
+
+Podemos criar uma variável que indica se houve atraso ou adiantamento, ajustando a cor dos pontos de acordo com essa nova variável:
+
+```{r}
+atrasos %>% 
+  mutate(sinal = ifelse(delay > 0, "- atrasou", "+ adiantou")) %>%
+  ggplot(aes(x = distance, y = delay)) +
+  geom_point(aes(color = sinal))
+
+```
+
+Além disso, adicionaremos uma camada (\textit{layer}) com a linha de tendência (equação da reta):
+
+```{r}
+atrasos %>% 
+  mutate(sinal = ifelse(delay > 0, "atrasou", "não atrasou")) %>%
+  ggplot(aes(x = distance, y = delay)) +
+  geom_point(aes(color = sinal)) +
+  geom_smooth(method = "lm",
+              se = FALSE,
+              color = "black")
+
+```
+
+Vamos agora personalizar o título do gráfico e dos eixos:
+
+```{r}
+atrasos %>% 
+  mutate(sinal = ifelse(delay > 0, "Atrasou", "Não atrasou")) %>%
+  ggplot(aes(x = distance, y = delay)) +
+  geom_point(aes(color = sinal)) +
+  geom_smooth(method = "lm",
+              se = FALSE,
+              color = "black") +
+  labs(title = "Distância x Atrasos (vôos partindo de NY)",
+       x = "Distância (em milhas)",
+       y = "Atraso na decolagem (em minutos)",
+       color = "")
+
+```
+
+Por fim, podemos ajustar a aparência geral do gráfico:
+
+```{r}
+atrasos %>% 
+  mutate(sinal = ifelse(delay > 0, "Atrasou", "Não atrasou")) %>%
+  ggplot(aes(x = distance, y = delay)) +
+  geom_point(aes(color = sinal)) +
+  geom_smooth(method = "lm",
+              se = FALSE,
+              color = "black") +
+  labs(title = "Distância x Atrasos (vôos partindo de NY)",
+       x = "Distância (em milhas)",
+       y = "Atraso na decolagem (em minutos)",
+       color = "") +
+  theme_minimal()
+
+```
+
+## Gráfico de Colunas
+
+Vamos supor agora que nosso interesse seja criar um gráfico de colunas comparando o atraso médio dos 5 principais destinos que mais sofrem atrasos:
+
+```{r}
+top_5 <- atrasos %>% top_n(5, delay)
+top_5
+```
+
+Construindo nosso gráfico de colunas utilizando `geom_col()`:
+
+```{r}
+top_5 %>% 
+  ggplot(aes(x = dest, y = delay)) +
+  geom_col()
+```
+
+Perceba que as colunas estão organizadas em ordem alfabética. Para organizá-las em ordem decrescente da variável delay, podemos usar a função reorder:
+
+```{r}
+top_5 %>% 
+  ggplot(aes(x = reorder(dest, -delay), y = delay)) +
+  geom_col()
+```
+
+Podemos pintar todas as colunas da mesma cor:
+
+```{r}
+top_5 %>% 
+  ggplot(aes(x = reorder(dest, -delay), y = delay)) +
+  geom_col(fill = "lightblue")
+
+```
+
+Vamos agora alterar os títulos e a aparência do gráfico:
+
+```{r}
+top_5 %>% 
+  ggplot(aes(x = reorder(dest, -delay), y = delay)) +
+  geom_col(fill = "lightblue") +
+  labs(title = "Destinos com maior atraso médio (top 5)",
+       y = "Atraso (em minutos)",
+       x = "") +
+  theme_minimal()
+```
+
+Veja mais detalhes em:
+
+- https://ggplot2-book.org/
+- https://www.r-graph-gallery.com/index.html
+- https://www.data-to-viz.com/ 
+- https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf
+
+
+

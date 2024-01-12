@@ -17,6 +17,7 @@ github-repo: rstudio/bookdown-demo
 
 Este livro compila tutoriais da linguagem `R` que usei em diversas aulas que dei ao longo dos últimos anos e foi escrito baseado em Cotton (2013) e Wickham et al. (2023).
 
+Visite minha [página no github](https://magnotairone.github.io/).
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages

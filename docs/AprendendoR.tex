@@ -120,7 +120,7 @@
 
 \title{Aprendendo R}
 \author{Magno TF Severino}
-\date{2023-12-23}
+\date{2024-01-12}
 
 \begin{document}
 \maketitle
@@ -132,7 +132,9 @@
 \chapter*{Introdução}\label{introduuxe7uxe3o}
 \addcontentsline{toc}{chapter}{Introdução}
 
-Este livro compila tutoriais da linguagem \texttt{R} que usei em diversas aulas que dei ao longo dos últimos anos e foi escrito baseado em Cotton (2013)
+Este livro compila tutoriais da linguagem \texttt{R} que usei em diversas aulas que dei ao longo dos últimos anos e foi escrito baseado em Cotton (2013) e Wickham et al.~(2023).
+
+Visite minha \href{https://magnotairone.github.io/}{página no github}.
 
 \chapter{\texorpdfstring{Básicos da linguagem \texttt{R}}{Básicos da linguagem R}}\label{buxe1sicos-da-linguagem-r}
 
@@ -831,10 +833,276 @@ As operações básicas (+, -, *, /) funcionam de elemento a elemento em matrize
 
 Cuidado: as matrizes e vetores devem ter tamanhos compativeis!
 
+\subsection{Data frames}\label{data-frames}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{um\_data\_frame }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{x =}\NormalTok{ letters[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{],       }\CommentTok{\#coluna de caracteres}
+  \AttributeTok{y =} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{),           }\CommentTok{\#coluna de numeros}
+  \AttributeTok{z =} \FunctionTok{runif}\NormalTok{(}\DecValTok{5}\NormalTok{) }\SpecialCharTok{\textgreater{}} \FloatTok{0.5}      \CommentTok{\#coluna de logicos}
+\NormalTok{)}
+\NormalTok{um\_data\_frame}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   x          y     z
+## 1 a -0.8233980  TRUE
+## 2 b  0.1307668  TRUE
+## 3 c  0.1691104 FALSE
+## 4 d  0.5612312 FALSE
+## 5 e -0.1864049 FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(um\_data\_frame)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "data.frame"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rownames}\NormalTok{(um\_data\_frame) }\CommentTok{\#nome das linhas do dataframe}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "1" "2" "3" "4" "5"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(um\_data\_frame) }\CommentTok{\#nome das colunas do dataframe}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "x" "y" "z"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(um\_data\_frame) }\CommentTok{\#retorna o numero de colunas do dataframe (diferente de matriz)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ncol}\NormalTok{(um\_data\_frame) }\CommentTok{\#numero de linhas do dataframe}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{nrow}\NormalTok{(um\_data\_frame) }\CommentTok{\#numero de colunas do dataframe}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(um\_data\_frame) }\CommentTok{\#dimensao do dataframe}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\# Indexação de dataframes}
+
+\NormalTok{um\_data\_frame[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{] }\CommentTok{\#o segundo e o terceiro elementos das duas primeiras colunas do dataframe}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   x         y
+## 2 b 0.1307668
+## 3 c 0.1691104
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(um\_data\_frame[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{]) }\CommentTok{\#observe que o resultado é um dataframe}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "data.frame"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{um\_data\_frame[}\FunctionTok{c}\NormalTok{(}\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"x"}\NormalTok{, }\StringTok{"y"}\NormalTok{)] }\CommentTok{\#mesmo resultado que acima}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   x         y
+## 2 b 0.1307668
+## 3 c 0.1691104
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{um\_data\_frame[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "b" "c"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(um\_data\_frame[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{]) }\CommentTok{\#como selecionamos um vetor, a classe é a mesma do elemento selecionado}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{um\_data\_frame}\SpecialCharTok{$}\NormalTok{x }\CommentTok{\#seleciona a coluna x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a" "b" "c" "d" "e"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{um\_data\_frame}\SpecialCharTok{$}\NormalTok{x[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{] }\CommentTok{\#seleciona os elementos 2 e 3 da coluna x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "b" "c"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{um\_data\_frame[[}\DecValTok{1}\NormalTok{]][}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{] }\CommentTok{\#equivalente ao comando acima}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "b" "c"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{um\_data\_frame[[}\StringTok{"x"}\NormalTok{]][}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{] }\CommentTok{\#equivalente ao comando acima}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "b" "c"
+\end{verbatim}
+
+\subsubsection{Manipulação de dataframes}\label{manipulauxe7uxe3o-de-dataframes}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{novo\_data\_frame }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{( }\CommentTok{\#mesmas colunas que o dataframe anterior, ordem diferente}
+  \AttributeTok{z =} \FunctionTok{rlnorm}\NormalTok{(}\DecValTok{5}\NormalTok{), }\CommentTok{\#números distribuídos seguindo a distribuição lognormal}
+  \AttributeTok{y =} \FunctionTok{sample}\NormalTok{(}\DecValTok{5}\NormalTok{), }\CommentTok{\#número 1 a 5 distribuidos em uma ordem aleatória}
+  \AttributeTok{x =}\NormalTok{ letters[}\DecValTok{3}\SpecialCharTok{:}\DecValTok{7}\NormalTok{])}
+
+\FunctionTok{rbind}\NormalTok{(um\_data\_frame, novo\_data\_frame) }\CommentTok{\#qual a dimensão deste elemento?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    x          y         z
+## 1  a -0.8233980 1.0000000
+## 2  b  0.1307668 1.0000000
+## 3  c  0.1691104 0.0000000
+## 4  d  0.5612312 0.0000000
+## 5  e -0.1864049 0.0000000
+## 6  c  2.0000000 2.3400866
+## 7  d  4.0000000 0.8160785
+## 8  e  5.0000000 0.8653514
+## 9  f  1.0000000 1.4635845
+## 10 g  3.0000000 0.1219754
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cbind}\NormalTok{(um\_data\_frame, novo\_data\_frame) }\CommentTok{\#qual a dimensão deste elemento?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   x          y     z         z y x
+## 1 a -0.8233980  TRUE 2.3400866 2 c
+## 2 b  0.1307668  TRUE 0.8160785 4 d
+## 3 c  0.1691104 FALSE 0.8653514 5 e
+## 4 d  0.5612312 FALSE 1.4635845 1 f
+## 5 e -0.1864049 FALSE 0.1219754 3 g
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?merge }\CommentTok{\#Para mesclar dois dataframes, devemos considerar uma coluna que contenha algum identificador único para cada elemento.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{merge}\NormalTok{(um\_data\_frame, novo\_data\_frame, }\AttributeTok{by =} \StringTok{"x"}\NormalTok{)  }\CommentTok{\#mescla os dataframes atraves da coluna \textquotesingle{}x\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   x        y.x   z.x       z.y y.y
+## 1 c  0.1691104 FALSE 2.3400866   2
+## 2 d  0.5612312 FALSE 0.8160785   4
+## 3 e -0.1864049 FALSE 0.8653514   5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{merge}\NormalTok{(um\_data\_frame, novo\_data\_frame, }\AttributeTok{by =} \StringTok{"x"}\NormalTok{, }\AttributeTok{all =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#o que o argumento all=TRUE faz?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   x        y.x   z.x       z.y y.y
+## 1 a -0.8233980  TRUE        NA  NA
+## 2 b  0.1307668  TRUE        NA  NA
+## 3 c  0.1691104 FALSE 2.3400866   2
+## 4 d  0.5612312 FALSE 0.8160785   4
+## 5 e -0.1864049 FALSE 0.8653514   5
+## 6 f         NA    NA 1.4635845   1
+## 7 g         NA    NA 0.1219754   3
+\end{verbatim}
+
 \chapter{Controle de fluxo e repetição}\label{controle-de-fluxo-e-repetiuxe7uxe3o}
 
 \begin{quote}
-Este capítulo foi escrito baseado em Cotton (2013) e o conteúdo apresentado aqui foi usado como base para o minicurso ``R para não-programadores''.
+Este capítulo foi escrito baseado em Cotton (2013) e o conteúdo apresentado aqui foi usado como base para o minicurso ``R para não-programadores'' que ministrei junto com a prof. Marina Bicudo.
 \end{quote}
 
 Por algum motivo particular, você pode querer executar ou não um determinado trecho do seu código.
@@ -1424,7 +1692,7 @@ Abaixo, adicionamos períodos de tempos à uma data (anos, meses, dias), obtemos
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 30.99452
+## [1] 31.04918
 \end{verbatim}
 
 \begin{Shaded}
@@ -1435,7 +1703,7 @@ Abaixo, adicionamos períodos de tempos à uma data (anos, meses, dias), obtemos
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 11320
+## [1] 11340
 \end{verbatim}
 
 Este pacote nos permite trabalhar com data e hora em uma mesma variável.
@@ -1776,7 +2044,7 @@ Abaixo, criamos histogramas do atrado na partida de cada um dos três aeroportos
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-27-1.pdf}
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-31-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1784,7 +2052,7 @@ Abaixo, criamos histogramas do atrado na partida de cada um dos três aeroportos
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-27-2.pdf}
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-31-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1792,7 +2060,7 @@ Abaixo, criamos histogramas do atrado na partida de cada um dos três aeroportos
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-27-3.pdf}
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-31-3.pdf}
 
 Os três gráficos podem ser exibidos de uma única vez se usarmos a opção \texttt{mfrow}, que permite definir o número de linhas e colunas do grid para plotar os gráficos.
 
@@ -1808,7 +2076,7 @@ Os três gráficos podem ser exibidos de uma única vez se usarmos a opção \te
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics[width=1\linewidth]{AprendendoR_files/figure-latex/unnamed-chunk-28-1}
+\includegraphics[width=1\linewidth]{AprendendoR_files/figure-latex/unnamed-chunk-32-1}
 
 \section{Lista de exercicios}\label{lista-de-exercicios-1}
 
@@ -1849,34 +2117,7 @@ E carregar a biblioteca:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## -- Attaching packages --------------------------------------- tidyverse 1.3.2 --
-## v ggplot2 3.4.2      v purrr   0.3.5 
-## v tibble  3.2.1      v dplyr   1.0.10
-## v tidyr   1.2.1      v stringr 1.4.1 
-## v readr   2.1.3      v forcats 0.5.2
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'ggplot2' was built under R version 4.2.3
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'tibble' was built under R version 4.2.3
-\end{verbatim}
-
-\begin{verbatim}
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x lubridate::as.difftime() masks base::as.difftime()
-## x lubridate::date()        masks base::date()
-## x dplyr::filter()          masks stats::filter()
-## x lubridate::intersect()   masks base::intersect()
-## x dplyr::lag()             masks stats::lag()
-## x lubridate::setdiff()     masks base::setdiff()
-## x lubridate::union()       masks base::union()
-\end{verbatim}
-
-\section{\texorpdfstring{O operador pipe ( \%\textgreater\% ) da library \texttt{magrittr}}{O operador pipe ( \%\textgreater\% ) da library magrittr}}\label{o-operador-pipe-da-library-magrittr}
+\section{\texorpdfstring{O operador pipe ( \texttt{\%\textgreater{}\%} ) da library \texttt{magrittr}}{O operador pipe ( \%\textgreater\% ) da library magrittr}}\label{o-operador-pipe-da-library-magrittr}
 
 Atalho no teclado: \texttt{Ctrl\ +\ Shift\ +\ M}
 
@@ -1885,9 +2126,9 @@ Passa o objeto do lado esquerdo como primeiro argumento (ou
 
 \begin{itemize}
 \item
-  \textbf{x} \texttt{\%\textgreater{}\%} f(y) é equivalente a f(\textbf{x},y)
+  \texttt{x\ \%\textgreater{}\%\ f(y)} é equivalente a f(\textbf{x},y)
 \item
-  \textbf{y} \texttt{\%\textgreater{}\%} f(x,\texttt{.},z) é equivalente a f(x,\textbf{y},z)
+  \texttt{y\ \%\textgreater{}\%\ f(x,\ .,z)} é equivalente a f(x,\textbf{y},z)
 \end{itemize}
 
 Na prática, vamos supor que queremos somar todos os elementos do \texttt{vetor} e em seguida tirar a raiz quadrada desta soma:
@@ -2455,9 +2696,244 @@ Vamos calcular o atraso médio de decolagem e a quantidade total de voos, mas ag
 
 Para cada destino, calcule: a (1) distância média dos voos e (2) o tempo de atraso médio na decolagem e (3) o número de voos na base e mostre tudo numa planilha só.
 
-\chapter{\texorpdfstring{\texttt{ggplot}}{ggplot}}\label{ggplot}
+\chapter{\texorpdfstring{Vizualização com \texttt{ggplot}}{Vizualização com ggplot}}\label{vizualizauxe7uxe3o-com-ggplot}
 
-Em breve!
+\begin{quote}
+Este capítulo foi escrito baseado em Cotton (2013) e o conteúdo apresentado aqui foi usado como base para o minicurso ``R para não-programadores'' que ministrei junto com a prof. Marina Bicudo.
+\end{quote}
+
+\texttt{ggplot2} é uma biblioteca popular para criação de gráficos em R.
+
+O \texttt{ggplot2} funciona seguindo o conceito de ``grammar of graphics'' (gramática dos gráficos). Você constrói um gráfico camada por camada, adicionando elementos conforme necessário.
+
+Comece criando um objeto \texttt{ggplot} com a função \texttt{ggplot()}.
+Essa função recebe o conjunto de dados que você deseja visualizar, por exemplo os dados de voos do pacote \texttt{nycflights}.
+
+Vamos supor que nosso objetivo seja entender a relação entre distância do voo e atraso. Para isso, utilizaremos um \textbf{gráfico de dispersão}.
+
+\section{Criando um objeto ggplot}\label{criando-um-objeto-ggplot}
+
+Para começar, vamos criar um objeto ggplot utilizando a base de dados \texttt{flights}, calculando o atraso médio dos voos por destino.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+
+\NormalTok{atrasos }\OtherTok{\textless{}{-}}\NormalTok{ flights }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(distance), }\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(arr\_delay)) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_by}\NormalTok{(dest) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarise}\NormalTok{(}\AttributeTok{distance =} \FunctionTok{mean}\NormalTok{(distance),}
+              \AttributeTok{delay =} \FunctionTok{mean}\NormalTok{(arr\_delay))}
+\FunctionTok{head}\NormalTok{(atrasos)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 3
+##   dest  distance delay
+##   <chr>    <dbl> <dbl>
+## 1 ABQ      1826   4.38
+## 2 ACK       199   4.85
+## 3 ALB       143  14.4 
+## 4 ANC      3370  -2.5 
+## 5 ATL       757. 11.3 
+## 6 AUS      1514.  6.02
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{atrasos }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-58-1.pdf}
+
+Observe que o objeto \texttt{ggplot} gerado representa apenas uma tela em branco, pois, dos três componentes básicos, apenas a base de dados (atrasos) foi especificada.
+
+\section{Gráfico de Dispersão}\label{gruxe1fico-de-dispersuxe3o}
+
+Nosso objetivo é criar um gráfico de dispersão, utilizando a geometria (\texttt{geom\_point}).
+Vamos mapear as variáveis (x e y) dentro do componente de estética (aesthetics):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{atrasos }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ distance, }\AttributeTok{y =}\NormalTok{ delay)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-59-1.pdf}
+
+Podemos criar uma variável que indica se houve atraso ou adiantamento, ajustando a cor dos pontos de acordo com essa nova variável:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{atrasos }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{sinal =} \FunctionTok{ifelse}\NormalTok{(delay }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, }\StringTok{"{-} atrasou"}\NormalTok{, }\StringTok{"+ adiantou"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ distance, }\AttributeTok{y =}\NormalTok{ delay)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ sinal))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-60-1.pdf}
+
+Além disso, adicionaremos uma camada (\textit{layer}) com a linha de tendência (equação da reta):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{atrasos }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{sinal =} \FunctionTok{ifelse}\NormalTok{(delay }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, }\StringTok{"atrasou"}\NormalTok{, }\StringTok{"não atrasou"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ distance, }\AttributeTok{y =}\NormalTok{ delay)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ sinal)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{,}
+              \AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{,}
+              \AttributeTok{color =} \StringTok{"black"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-61-1.pdf}
+
+Vamos agora personalizar o título do gráfico e dos eixos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{atrasos }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{sinal =} \FunctionTok{ifelse}\NormalTok{(delay }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, }\StringTok{"Atrasou"}\NormalTok{, }\StringTok{"Não atrasou"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ distance, }\AttributeTok{y =}\NormalTok{ delay)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ sinal)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{,}
+              \AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{,}
+              \AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distância x Atrasos (vôos partindo de NY)"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Distância (em milhas)"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Atraso na decolagem (em minutos)"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-62-1.pdf}
+
+Por fim, podemos ajustar a aparência geral do gráfico:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{atrasos }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{sinal =} \FunctionTok{ifelse}\NormalTok{(delay }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, }\StringTok{"Atrasou"}\NormalTok{, }\StringTok{"Não atrasou"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ distance, }\AttributeTok{y =}\NormalTok{ delay)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ sinal)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{,}
+              \AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{,}
+              \AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distância x Atrasos (vôos partindo de NY)"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Distância (em milhas)"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Atraso na decolagem (em minutos)"}\NormalTok{,}
+       \AttributeTok{color =} \StringTok{""}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-63-1.pdf}
+
+\section{Gráfico de Colunas}\label{gruxe1fico-de-colunas}
+
+Vamos supor agora que nosso interesse seja criar um gráfico de colunas comparando o atraso médio dos 5 principais destinos que mais sofrem atrasos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{top\_5 }\OtherTok{\textless{}{-}}\NormalTok{ atrasos }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{top\_n}\NormalTok{(}\DecValTok{5}\NormalTok{, delay)}
+\NormalTok{top\_5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 3
+##   dest  distance delay
+##   <chr>    <dbl> <dbl>
+## 1 CAE       604.  41.8
+## 2 JAC      1876.  28.1
+## 3 OKC      1325   30.6
+## 4 TUL      1215   33.7
+## 5 TYS       638.  24.1
+\end{verbatim}
+
+Construindo nosso gráfico de colunas utilizando \texttt{geom\_col()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{top\_5 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ dest, }\AttributeTok{y =}\NormalTok{ delay)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-65-1.pdf}
+
+Perceba que as colunas estão organizadas em ordem alfabética. Para organizá-las em ordem decrescente da variável delay, podemos usar a função reorder:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{top\_5 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(dest, }\SpecialCharTok{{-}}\NormalTok{delay), }\AttributeTok{y =}\NormalTok{ delay)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-66-1.pdf}
+
+Podemos pintar todas as colunas da mesma cor:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{top\_5 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(dest, }\SpecialCharTok{{-}}\NormalTok{delay), }\AttributeTok{y =}\NormalTok{ delay)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-67-1.pdf}
+
+Vamos agora alterar os títulos e a aparência do gráfico:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{top\_5 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(dest, }\SpecialCharTok{{-}}\NormalTok{delay), }\AttributeTok{y =}\NormalTok{ delay)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Destinos com maior atraso médio (top 5)"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Atraso (em minutos)"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{""}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{AprendendoR_files/figure-latex/unnamed-chunk-68-1.pdf}
+
+Veja mais detalhes em:
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://ggplot2-book.org/}
+\item
+  \url{https://www.r-graph-gallery.com/index.html}
+\item
+  \url{https://www.data-to-viz.com/}
+\item
+  \url{https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf}
+\end{itemize}
 
 \chapter*{References}\label{references}
 \addcontentsline{toc}{chapter}{References}

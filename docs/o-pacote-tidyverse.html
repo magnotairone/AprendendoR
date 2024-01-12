@@ -23,7 +23,7 @@
 <meta name="author" content="Magno TF Severino" />
 
 
-<meta name="date" content="2023-12-23" />
+<meta name="date" content="2024-01-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="importação-e-manipulação-de-bases-de-dados.html"/>
-<link rel="next" href="ggplot.html"/>
+<link rel="next" href="vizualização-com-ggplot.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -150,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#vetores"><i class="fa fa-check"></i><b>1.4.1</b> Vetores</a></li>
 <li class="chapter" data-level="1.4.2" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#matrizes"><i class="fa fa-check"></i><b>1.4.2</b> Matrizes</a></li>
+<li class="chapter" data-level="1.4.3" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#data-frames"><i class="fa fa-check"></i><b>1.4.3</b> Data frames</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="controle-de-fluxo-e-repetição.html"><a href="controle-de-fluxo-e-repetição.html"><i class="fa fa-check"></i><b>2</b> Controle de fluxo e repetição</a>
@@ -166,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html"><i class="fa fa-check"></i><b>4</b> O pacote <code>tidyverse</code></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#o-operador-pipe-da-library-magrittr"><i class="fa fa-check"></i><b>4.1</b> O operador pipe ( %&gt;% ) da library <code>magrittr</code></a></li>
+<li class="chapter" data-level="4.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#o-operador-pipe-da-library-magrittr"><i class="fa fa-check"></i><b>4.1</b> O operador pipe ( <code>%&gt;%</code> ) da library <code>magrittr</code></a></li>
 <li class="chapter" data-level="4.2" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#transformação-de-dados-com-dplyr"><i class="fa fa-check"></i><b>4.2</b> Transformação de Dados com <code>dplyr</code></a></li>
 <li class="chapter" data-level="4.3" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#filtrando-linhas-com-filter"><i class="fa fa-check"></i><b>4.3</b> Filtrando linhas com <code>filter()</code></a></li>
 <li class="chapter" data-level="4.4" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#arranjando-linhas-com-arrange"><i class="fa fa-check"></i><b>4.4</b> Arranjando linhas com <code>arrange()</code></a></li>
@@ -178,7 +179,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.8.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#desafio"><i class="fa fa-check"></i><b>4.8.1</b> DESAFIO:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot</code></a></li>
+<li class="chapter" data-level="5" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html"><i class="fa fa-check"></i><b>5</b> Vizualização com <code>ggplot</code></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#criando-um-objeto-ggplot"><i class="fa fa-check"></i><b>5.1</b> Criando um objeto ggplot</a></li>
+<li class="chapter" data-level="5.2" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#gráfico-de-dispersão"><i class="fa fa-check"></i><b>5.2</b> Gráfico de Dispersão</a></li>
+<li class="chapter" data-level="5.3" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#gráfico-de-colunas"><i class="fa fa-check"></i><b>5.3</b> Gráfico de Colunas</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -209,41 +215,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados e filosofia:</p>
 <p>Veja todos os pacotes disponíveis em: <a href="https://www.tidyverse.org/" class="uri">https://www.tidyverse.org/</a></p>
 <p>Vamos instalar o pacote <code>tidyverse</code>:</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="o-pacote-tidyverse.html#cb223-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="o-pacote-tidyverse.html#cb268-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <p>E carregar a biblioteca:</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="o-pacote-tidyverse.html#cb224-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-## ✔ ggplot2 3.4.2      ✔ purrr   0.3.5 
-## ✔ tibble  3.2.1      ✔ dplyr   1.0.10
-## ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
-## ✔ readr   2.1.3      ✔ forcats 0.5.2</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.2.3</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 4.2.3</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ lubridate::as.difftime() masks base::as.difftime()
-## ✖ lubridate::date()        masks base::date()
-## ✖ dplyr::filter()          masks stats::filter()
-## ✖ lubridate::intersect()   masks base::intersect()
-## ✖ dplyr::lag()             masks stats::lag()
-## ✖ lubridate::setdiff()     masks base::setdiff()
-## ✖ lubridate::union()       masks base::union()</code></pre>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="o-pacote-tidyverse.html#cb269-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <div id="o-operador-pipe-da-library-magrittr" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> O operador pipe ( %&gt;% ) da library <code>magrittr</code><a href="o-pacote-tidyverse.html#o-operador-pipe-da-library-magrittr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.1</span> O operador pipe ( <code>%&gt;%</code> ) da library <code>magrittr</code><a href="o-pacote-tidyverse.html#o-operador-pipe-da-library-magrittr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Atalho no teclado: <code>Ctrl + Shift + M</code></p>
 <p>Passa o objeto do lado esquerdo como primeiro argumento (ou
 .argumento) da função do lado direito:</p>
 <ul>
-<li><p> <code>%&gt;%</code> f(y) é equivalente a f(,y)</p></li>
-<li><p> <code>%&gt;%</code> f(x,<code>.</code>,z) é equivalente a f(x,,z)</p></li>
+<li><p><code>x %&gt;% f(y)</code> é equivalente a f(,y)</p></li>
+<li><p><code>y %&gt;% f(x, .,z)</code> é equivalente a f(x,,z)</p></li>
 </ul>
 <p>Na prática, vamos supor que queremos somar todos os elementos do <code>vetor</code> e em seguida tirar a raiz quadrada desta soma:</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="o-pacote-tidyverse.html#cb229-1" tabindex="-1"></a>vetor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">80</span>,<span class="dv">200</span>)</span>
-<span id="cb229-2"><a href="o-pacote-tidyverse.html#cb229-2" tabindex="-1"></a></span>
-<span id="cb229-3"><a href="o-pacote-tidyverse.html#cb229-3" tabindex="-1"></a><span class="co">#raiz da soma</span></span>
-<span id="cb229-4"><a href="o-pacote-tidyverse.html#cb229-4" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>(vetor))</span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="o-pacote-tidyverse.html#cb270-1" tabindex="-1"></a>vetor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">80</span>,<span class="dv">200</span>)</span>
+<span id="cb270-2"><a href="o-pacote-tidyverse.html#cb270-2" tabindex="-1"></a></span>
+<span id="cb270-3"><a href="o-pacote-tidyverse.html#cb270-3" tabindex="-1"></a><span class="co">#raiz da soma</span></span>
+<span id="cb270-4"><a href="o-pacote-tidyverse.html#cb270-4" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>(vetor))</span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
 <p>Usando o pipe:</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="o-pacote-tidyverse.html#cb231-1" tabindex="-1"></a>vetor <span class="sc">%&gt;%</span> <span class="fu">sum</span>() <span class="sc">%&gt;%</span> <span class="fu">sqrt</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="o-pacote-tidyverse.html#cb272-1" tabindex="-1"></a>vetor <span class="sc">%&gt;%</span> <span class="fu">sum</span>() <span class="sc">%&gt;%</span> <span class="fu">sqrt</span>()</span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
 </div>
 <div id="transformação-de-dados-com-dplyr" class="section level2 hasAnchor" number="4.2">
@@ -272,9 +263,9 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 <div id="filtrando-linhas-com-filter" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Filtrando linhas com <code>filter()</code><a href="o-pacote-tidyverse.html#filtrando-linhas-com-filter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Vamos voltar a utilizar a base de dados flights:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="o-pacote-tidyverse.html#cb233-1" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;flights.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="o-pacote-tidyverse.html#cb274-1" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;flights.csv&quot;</span>)</span></code></pre></div>
 <p>Sem pipe:</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="o-pacote-tidyverse.html#cb234-1" tabindex="-1"></a><span class="fu">filter</span>(flights, month <span class="sc">==</span> <span class="dv">1</span>, day <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="o-pacote-tidyverse.html#cb275-1" tabindex="-1"></a><span class="fu">filter</span>(flights, month <span class="sc">==</span> <span class="dv">1</span>, day <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 842 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
@@ -293,7 +284,7 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 ## #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
 ## #   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 <p>Com pipe:</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="o-pacote-tidyverse.html#cb236-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">filter</span>(month <span class="sc">==</span> <span class="dv">1</span>, day <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="o-pacote-tidyverse.html#cb277-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">filter</span>(month <span class="sc">==</span> <span class="dv">1</span>, day <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 842 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
@@ -312,11 +303,11 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 ## #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
 ## #   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 <p>Atrubuindo e imprimindo:</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="o-pacote-tidyverse.html#cb238-1" tabindex="-1"></a><span class="co"># Para atribuir e imprimir de uma só vez, coloque</span></span>
-<span id="cb238-2"><a href="o-pacote-tidyverse.html#cb238-2" tabindex="-1"></a><span class="co"># parênteses em volta da atribuição (os dois espaços</span></span>
-<span id="cb238-3"><a href="o-pacote-tidyverse.html#cb238-3" tabindex="-1"></a><span class="co"># depois dos parênteses abaixo não são necessários).</span></span>
-<span id="cb238-4"><a href="o-pacote-tidyverse.html#cb238-4" tabindex="-1"></a></span>
-<span id="cb238-5"><a href="o-pacote-tidyverse.html#cb238-5" tabindex="-1"></a>(  jan1 <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> <span class="fu">filter</span>(month <span class="sc">==</span> <span class="dv">1</span>, day <span class="sc">==</span> <span class="dv">1</span>)  )</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="o-pacote-tidyverse.html#cb279-1" tabindex="-1"></a><span class="co"># Para atribuir e imprimir de uma só vez, coloque</span></span>
+<span id="cb279-2"><a href="o-pacote-tidyverse.html#cb279-2" tabindex="-1"></a><span class="co"># parênteses em volta da atribuição (os dois espaços</span></span>
+<span id="cb279-3"><a href="o-pacote-tidyverse.html#cb279-3" tabindex="-1"></a><span class="co"># depois dos parênteses abaixo não são necessários).</span></span>
+<span id="cb279-4"><a href="o-pacote-tidyverse.html#cb279-4" tabindex="-1"></a></span>
+<span id="cb279-5"><a href="o-pacote-tidyverse.html#cb279-5" tabindex="-1"></a>(  jan1 <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> <span class="fu">filter</span>(month <span class="sc">==</span> <span class="dv">1</span>, day <span class="sc">==</span> <span class="dv">1</span>)  )</span></code></pre></div>
 <pre><code>## # A tibble: 842 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
@@ -337,7 +328,7 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 <div style="page-break-after: always;"></div>
 <p>Podemos utilizar os operadores lógicos aprendidos nas primeiras aulas para filtrar aqui também.</p>
 <p>Por exemplo, vamos filtar somente as observações que são <code>NA</code> na coluna <code>arr_delay</code>:</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="o-pacote-tidyverse.html#cb240-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(arr_delay))</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="o-pacote-tidyverse.html#cb281-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(arr_delay))</span></code></pre></div>
 <pre><code>## # A tibble: 327,346 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
@@ -356,7 +347,7 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 ## #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
 ## #   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 <p>Origem = Kennedy ou Newark, Destino = Los Angeles:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="o-pacote-tidyverse.html#cb242-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">filter</span>(origin <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;JFK&quot;</span>, <span class="st">&quot;EWR&quot;</span>), dest <span class="sc">==</span> <span class="st">&quot;LAX&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="o-pacote-tidyverse.html#cb283-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">filter</span>(origin <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;JFK&quot;</span>, <span class="st">&quot;EWR&quot;</span>), dest <span class="sc">==</span> <span class="st">&quot;LAX&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 16,174 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
@@ -379,7 +370,7 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 <div id="arranjando-linhas-com-arrange" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Arranjando linhas com <code>arrange()</code><a href="o-pacote-tidyverse.html#arranjando-linhas-com-arrange" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Organizando os dados segundo a ordem crescente da coluna <code>dep_delay</code>:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="o-pacote-tidyverse.html#cb244-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(dep_delay)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="o-pacote-tidyverse.html#cb285-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(dep_delay)</span></code></pre></div>
 <pre><code>## # A tibble: 336,776 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
@@ -398,7 +389,7 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 ## #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
 ## #   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 <p>Agora usando a ordem decrescente:</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="o-pacote-tidyverse.html#cb246-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(dep_delay))</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="o-pacote-tidyverse.html#cb287-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(dep_delay))</span></code></pre></div>
 <pre><code>## # A tibble: 336,776 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
@@ -417,7 +408,7 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 ## #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
 ## #   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 <p>Se você fornecer mais de uma coluna, as demais colunas serão usadas sucessivamente para decidir os empates:</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="o-pacote-tidyverse.html#cb248-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(month), day)</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="o-pacote-tidyverse.html#cb289-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(month), day)</span></code></pre></div>
 <pre><code>## # A tibble: 336,776 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
@@ -439,7 +430,7 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 <div id="selecionando-colunas-com-select" class="section level2 hasAnchor" number="4.5">
 <h2><span class="header-section-number">4.5</span> Selecionando colunas com select()<a href="o-pacote-tidyverse.html#selecionando-colunas-com-select" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Vamos supor que eu só queira utilizar colunas específicas da minha base: <code>carrier</code>, <code>year</code>, <code>month</code> e <code>day</code></p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="o-pacote-tidyverse.html#cb250-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(carrier, year, month, day)</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="o-pacote-tidyverse.html#cb291-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(carrier, year, month, day)</span></code></pre></div>
 <pre><code>## # A tibble: 336,776 × 4
 ##    carrier  year month   day
 ##    &lt;chr&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;
@@ -455,7 +446,7 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 ## 10 AA       2013     1     1
 ## # ℹ 336,766 more rows</code></pre>
 <p>Selecionando todas as colunas, MENOS a coluna <code>year</code>:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="o-pacote-tidyverse.html#cb252-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>year)</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="o-pacote-tidyverse.html#cb293-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>year)</span></code></pre></div>
 <pre><code>## # A tibble: 336,776 × 18
 ##    month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##    &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
@@ -474,7 +465,7 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 ## #   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,
 ## #   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 <p><code>everything()</code> é útil para mover as colunas de lugar:</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="o-pacote-tidyverse.html#cb254-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(carrier, origin, <span class="fu">everything</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="o-pacote-tidyverse.html#cb295-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(carrier, origin, <span class="fu">everything</span>())</span></code></pre></div>
 <pre><code>## # A tibble: 336,776 × 19
 ##    carrier origin  year month   day dep_time sched_dep_time dep_delay arr_time
 ##    &lt;chr&gt;   &lt;chr&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
@@ -493,9 +484,9 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 ## #   tailnum &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
 ## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 <p>Também podemos renomear uma coluna dentro do select:</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="o-pacote-tidyverse.html#cb256-1" tabindex="-1"></a><span class="co">#renomeando a coluna year para &quot;ano&quot;:</span></span>
-<span id="cb256-2"><a href="o-pacote-tidyverse.html#cb256-2" tabindex="-1"></a></span>
-<span id="cb256-3"><a href="o-pacote-tidyverse.html#cb256-3" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">&quot;ano&quot;</span> <span class="ot">=</span> year, month, day)</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="o-pacote-tidyverse.html#cb297-1" tabindex="-1"></a><span class="co">#renomeando a coluna year para &quot;ano&quot;:</span></span>
+<span id="cb297-2"><a href="o-pacote-tidyverse.html#cb297-2" tabindex="-1"></a></span>
+<span id="cb297-3"><a href="o-pacote-tidyverse.html#cb297-3" tabindex="-1"></a>flights <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">&quot;ano&quot;</span> <span class="ot">=</span> year, month, day)</span></code></pre></div>
 <pre><code>## # A tibble: 336,776 × 3
 ##      ano month   day
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;
@@ -512,10 +503,10 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 ## # ℹ 336,766 more rows</code></pre>
 <p>Combinando <code>filter()</code>, <code>select()</code> e <code>arrange()</code>:</p>
 <p>Suponha que nosso objetivo seja verificar qual a companhia aérea que mais atrasa nos vôos entre JFK e LAX:</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="o-pacote-tidyverse.html#cb258-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
-<span id="cb258-2"><a href="o-pacote-tidyverse.html#cb258-2" tabindex="-1"></a>    <span class="fu">filter</span>(origin <span class="sc">==</span> <span class="st">&quot;JFK&quot;</span>, dest <span class="sc">==</span> <span class="st">&quot;LAX&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb258-3"><a href="o-pacote-tidyverse.html#cb258-3" tabindex="-1"></a>    <span class="fu">select</span>(carrier, dep_delay) <span class="sc">%&gt;%</span></span>
-<span id="cb258-4"><a href="o-pacote-tidyverse.html#cb258-4" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(dep_delay))</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="o-pacote-tidyverse.html#cb299-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb299-2"><a href="o-pacote-tidyverse.html#cb299-2" tabindex="-1"></a>    <span class="fu">filter</span>(origin <span class="sc">==</span> <span class="st">&quot;JFK&quot;</span>, dest <span class="sc">==</span> <span class="st">&quot;LAX&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb299-3"><a href="o-pacote-tidyverse.html#cb299-3" tabindex="-1"></a>    <span class="fu">select</span>(carrier, dep_delay) <span class="sc">%&gt;%</span></span>
+<span id="cb299-4"><a href="o-pacote-tidyverse.html#cb299-4" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(dep_delay))</span></code></pre></div>
 <pre><code>## # A tibble: 11,262 × 2
 ##    carrier dep_delay
 ##    &lt;chr&gt;       &lt;dbl&gt;
@@ -534,9 +525,9 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 <div id="criando-variáveis-colunas-com-mutate" class="section level2 hasAnchor" number="4.6">
 <h2><span class="header-section-number">4.6</span> Criando variáveis (colunas) com <code>mutate()</code><a href="o-pacote-tidyverse.html#criando-variáveis-colunas-com-mutate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Queremos criar uma variável que mostre a velocidade de cada voo:</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="o-pacote-tidyverse.html#cb260-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
-<span id="cb260-2"><a href="o-pacote-tidyverse.html#cb260-2" tabindex="-1"></a>    <span class="fu">select</span>(year<span class="sc">:</span>day, flight,  distance, air_time) <span class="sc">%&gt;%</span></span>
-<span id="cb260-3"><a href="o-pacote-tidyverse.html#cb260-3" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">speed =</span> distance <span class="sc">/</span> (air_time <span class="sc">/</span> <span class="dv">60</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="o-pacote-tidyverse.html#cb301-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb301-2"><a href="o-pacote-tidyverse.html#cb301-2" tabindex="-1"></a>    <span class="fu">select</span>(year<span class="sc">:</span>day, flight,  distance, air_time) <span class="sc">%&gt;%</span></span>
+<span id="cb301-3"><a href="o-pacote-tidyverse.html#cb301-3" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">speed =</span> distance <span class="sc">/</span> (air_time <span class="sc">/</span> <span class="dv">60</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 336,776 × 7
 ##     year month   day flight distance air_time speed
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
@@ -552,10 +543,10 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 ## 10  2013     1     1    301      733      138  319.
 ## # ℹ 336,766 more rows</code></pre>
 <p>Note que você também pode se referir às variáveis que criou:</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="o-pacote-tidyverse.html#cb262-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
-<span id="cb262-2"><a href="o-pacote-tidyverse.html#cb262-2" tabindex="-1"></a>    <span class="fu">select</span>(year<span class="sc">:</span>day, flight,  distance, air_time) <span class="sc">%&gt;%</span></span>
-<span id="cb262-3"><a href="o-pacote-tidyverse.html#cb262-3" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">hours =</span> air_time <span class="sc">/</span> <span class="dv">60</span>,</span>
-<span id="cb262-4"><a href="o-pacote-tidyverse.html#cb262-4" tabindex="-1"></a>           <span class="at">speed =</span> distance <span class="sc">/</span> hours)</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="o-pacote-tidyverse.html#cb303-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb303-2"><a href="o-pacote-tidyverse.html#cb303-2" tabindex="-1"></a>    <span class="fu">select</span>(year<span class="sc">:</span>day, flight,  distance, air_time) <span class="sc">%&gt;%</span></span>
+<span id="cb303-3"><a href="o-pacote-tidyverse.html#cb303-3" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">hours =</span> air_time <span class="sc">/</span> <span class="dv">60</span>,</span>
+<span id="cb303-4"><a href="o-pacote-tidyverse.html#cb303-4" tabindex="-1"></a>           <span class="at">speed =</span> distance <span class="sc">/</span> hours)</span></code></pre></div>
 <pre><code>## # A tibble: 336,776 × 8
 ##     year month   day flight distance air_time hours speed
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -574,9 +565,9 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 <div id="summarise-colapsa-a-tabela-toda-em-apenas-uma-linha" class="section level2 hasAnchor" number="4.7">
 <h2><span class="header-section-number">4.7</span> <code>summarise()</code> colapsa a tabela toda em apenas uma linha<a href="o-pacote-tidyverse.html#summarise-colapsa-a-tabela-toda-em-apenas-uma-linha" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Vamos calcular o atraso médio de decolagem e a quantidade total de voos:</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="o-pacote-tidyverse.html#cb264-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
-<span id="cb264-2"><a href="o-pacote-tidyverse.html#cb264-2" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay)) <span class="sc">%&gt;%</span></span>
-<span id="cb264-3"><a href="o-pacote-tidyverse.html#cb264-3" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay), <span class="at">number_of_flights =</span> <span class="fu">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="o-pacote-tidyverse.html#cb305-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb305-2"><a href="o-pacote-tidyverse.html#cb305-2" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay)) <span class="sc">%&gt;%</span></span>
+<span id="cb305-3"><a href="o-pacote-tidyverse.html#cb305-3" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay), <span class="at">number_of_flights =</span> <span class="fu">n</span>())</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2
 ##   mean_delay number_of_flights
 ##        &lt;dbl&gt;             &lt;int&gt;
@@ -585,10 +576,10 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
 <div id="group_by-muda-a-unidade-de-análise-de-toda-a-tabela-para-os-grupos-definidos" class="section level2 hasAnchor" number="4.8">
 <h2><span class="header-section-number">4.8</span> <code>group_by()</code> muda a “unidade de análise” de toda a tabela para os grupos definidos<a href="o-pacote-tidyverse.html#group_by-muda-a-unidade-de-análise-de-toda-a-tabela-para-os-grupos-definidos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Vamos calcular o atraso médio de decolagem e a quantidade total de voos, mas agora analisando por companhia aérea:</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="o-pacote-tidyverse.html#cb266-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
-<span id="cb266-2"><a href="o-pacote-tidyverse.html#cb266-2" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay)) <span class="sc">%&gt;%</span></span>
-<span id="cb266-3"><a href="o-pacote-tidyverse.html#cb266-3" tabindex="-1"></a>    <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span> </span>
-<span id="cb266-4"><a href="o-pacote-tidyverse.html#cb266-4" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay), <span class="at">number_of_flights =</span> <span class="fu">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="o-pacote-tidyverse.html#cb307-1" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb307-2"><a href="o-pacote-tidyverse.html#cb307-2" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay)) <span class="sc">%&gt;%</span></span>
+<span id="cb307-3"><a href="o-pacote-tidyverse.html#cb307-3" tabindex="-1"></a>    <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span> </span>
+<span id="cb307-4"><a href="o-pacote-tidyverse.html#cb307-4" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean_delay =</span> <span class="fu">mean</span>(dep_delay), <span class="at">number_of_flights =</span> <span class="fu">n</span>())</span></code></pre></div>
 <pre><code>## # A tibble: 16 × 3
 ##    carrier mean_delay number_of_flights
 ##    &lt;chr&gt;        &lt;dbl&gt;             &lt;int&gt;
@@ -621,7 +612,7 @@ Todos os pacotes ‘tidyverse’ possuem a mesma gramática, estrutura de dados 
         </div>
       </div>
 <a href="importação-e-manipulação-de-bases-de-dados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ggplot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vizualização-com-ggplot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

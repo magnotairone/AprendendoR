@@ -23,7 +23,7 @@
 <meta name="author" content="Magno TF Severino" />
 
 
-<meta name="date" content="2023-12-23" />
+<meta name="date" content="2024-01-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#vetores"><i class="fa fa-check"></i><b>1.4.1</b> Vetores</a></li>
 <li class="chapter" data-level="1.4.2" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#matrizes"><i class="fa fa-check"></i><b>1.4.2</b> Matrizes</a></li>
+<li class="chapter" data-level="1.4.3" data-path="básicos-da-linguagem-r.html"><a href="básicos-da-linguagem-r.html#data-frames"><i class="fa fa-check"></i><b>1.4.3</b> Data frames</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="controle-de-fluxo-e-repetição.html"><a href="controle-de-fluxo-e-repetição.html"><i class="fa fa-check"></i><b>2</b> Controle de fluxo e repetição</a>
@@ -166,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html"><i class="fa fa-check"></i><b>4</b> O pacote <code>tidyverse</code></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#o-operador-pipe-da-library-magrittr"><i class="fa fa-check"></i><b>4.1</b> O operador pipe ( %&gt;% ) da library <code>magrittr</code></a></li>
+<li class="chapter" data-level="4.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#o-operador-pipe-da-library-magrittr"><i class="fa fa-check"></i><b>4.1</b> O operador pipe ( <code>%&gt;%</code> ) da library <code>magrittr</code></a></li>
 <li class="chapter" data-level="4.2" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#transformação-de-dados-com-dplyr"><i class="fa fa-check"></i><b>4.2</b> Transformação de Dados com <code>dplyr</code></a></li>
 <li class="chapter" data-level="4.3" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#filtrando-linhas-com-filter"><i class="fa fa-check"></i><b>4.3</b> Filtrando linhas com <code>filter()</code></a></li>
 <li class="chapter" data-level="4.4" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#arranjando-linhas-com-arrange"><i class="fa fa-check"></i><b>4.4</b> Arranjando linhas com <code>arrange()</code></a></li>
@@ -178,7 +179,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.8.1" data-path="o-pacote-tidyverse.html"><a href="o-pacote-tidyverse.html#desafio"><i class="fa fa-check"></i><b>4.8.1</b> DESAFIO:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot</code></a></li>
+<li class="chapter" data-level="5" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html"><i class="fa fa-check"></i><b>5</b> Vizualização com <code>ggplot</code></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#criando-um-objeto-ggplot"><i class="fa fa-check"></i><b>5.1</b> Criando um objeto ggplot</a></li>
+<li class="chapter" data-level="5.2" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#gráfico-de-dispersão"><i class="fa fa-check"></i><b>5.2</b> Gráfico de Dispersão</a></li>
+<li class="chapter" data-level="5.3" data-path="vizualização-com-ggplot.html"><a href="vizualização-com-ggplot.html#gráfico-de-colunas"><i class="fa fa-check"></i><b>5.3</b> Gráfico de Colunas</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -203,11 +209,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Aprendendo R</h1>
 <p class="author"><em>Magno TF Severino</em></p>
-<p class="date"><em>2023-12-23</em></p>
+<p class="date"><em>2024-01-12</em></p>
 </div>
 <div id="introdução" class="section level1 unnumbered hasAnchor">
 <h1>Introdução<a href="index.html#introdução" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Este livro compila tutoriais da linguagem <code>R</code> que usei em diversas aulas que dei ao longo dos últimos anos e foi escrito baseado em Cotton (2013)</p>
+<p>Este livro compila tutoriais da linguagem <code>R</code> que usei em diversas aulas que dei ao longo dos últimos anos e foi escrito baseado em Cotton (2013) e Wickham et al. (2023).</p>
+<p>Visite minha <a href="https://magnotairone.github.io/">página no github</a>.</p>
 
 </div>
             </section>
